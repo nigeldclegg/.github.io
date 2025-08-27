@@ -51,6 +51,8 @@
             right: 0;
             border-radius: 5px;
             overflow: hidden;
+            max-height: 400px;
+            overflow-y: auto;
         }
 
         .dropdown-content a {
@@ -148,6 +150,7 @@
             margin-top: 3rem;
             box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
             transition: all 0.3s ease;
+            align-self: center;
         }
 
         .next-question-btn:hover {
@@ -186,7 +189,7 @@
         }
 
         .hidden {
-            display: none;
+            display: none !important;
         }
 
         .visible {
@@ -231,21 +234,6 @@
                 <a onclick="showQuestion(3)">Monday feels like Saturday</a>
                 <a onclick="showQuestion(4)">Relationships with unlimited time</a>
                 <a onclick="showQuestion(5)">Choose where to live freely</a>
-                <a onclick="showQuestion(6)">Effortless travel</a>
-                <a onclick="showQuestion(7)">Cities designed for humans</a>
-                <a onclick="showQuestion(8)">Fresh local food</a>
-                <a onclick="showQuestion(9)">Surrounded by nature</a>
-                <a onclick="showQuestion(10)">Would crime disappear?</a>
-                <a onclick="showQuestion(11)">Children learning naturally</a>
-                <a onclick="showQuestion(12)">Eliminate fossil fuels</a>
-                <a onclick="showQuestion(13)">Never fear getting sick</a>
-                <a onclick="showQuestion(14)">Everything available</a>
-                <a onclick="showQuestion(15)">Unpleasant work disappears</a>
-                <a onclick="showQuestion(16)">Governance without wealth</a>
-                <a onclick="showQuestion(17)">Protein without factory farms</a>
-                <a onclick="showQuestion(18)">Complex community decisions</a>
-                <a onclick="showQuestion(19)">Children never "live for weekend"</a>
-                <a onclick="showQuestion(20)">How would transition happen?</a>
             </div>
         </div>
         
@@ -254,7 +242,7 @@
     </div>
 
     <div class="content-area">
-        <!-- Question 0 - Initial -->
+        <!-- Question 0 -->
         <div id="question-0" class="question-content">
             <button class="question-btn" onclick="showAnswer(0)">
                 What if we could eliminate the root cause of most human suffering?
@@ -309,8 +297,91 @@
             </button>
         </div>
 
-        <!-- Continue pattern for all questions... -->
-        
+        <!-- Question 2 -->
+        <div id="question-2" class="question-content hidden">
+            <button class="question-btn" onclick="showAnswer(2)">
+                Could you wake up every day excited about your contribution?
+            </button>
+        </div>
+
+        <!-- Answer 2 -->
+        <div id="answer-2" class="content-text hidden">
+            <p>Since there's no money forcing you into survival jobs, imagine waking up naturally without an alarm clock dictated by commute schedules. You stretch, look outside, and feel genuinely excited about what you might do today. Maybe you check community boards to see what projects interest you, or continue work on something you're passionate about. No dread, no obligation - just curiosity about how you want to contribute.</p>
+
+            <p>Picture spending your time on whatever feels meaningful - maybe you're helping design better solar collectors because energy systems fascinate you, teaching children because you love watching them discover new things, researching something you're curious about, creating art, or maintaining community infrastructure. You work with others who share your interests, not because they're assigned to you by a corporate hierarchy seeking profit.</p>
+
+            <p>No more "jobs you hate to pay bills you don't want." People contribute to projects they care about, work with others who share their interests, and create value because it matters to them. When people work on what fascinates them, freed from money pressures to cut costs or maximize profit, they push boundaries and create breakthroughs that profit-driven research often misses. Without pressure to generate money, people can build things to last, work sustainably, and prioritize excellence. Work becomes about improving life for everyone rather than generating returns for shareholders.</p>
+
+            <p>We already see this in open source software, Wikipedia, volunteer fire departments, scientific research - people doing complex, valuable work driven by curiosity, purpose, and community benefit rather than profit. Without money systems forcing artificial scarcity, this becomes how all contribution happens.</p>
+
+            <button class="next-question-btn" onclick="showQuestion(3)">
+                What if Monday felt exactly like Saturday?
+            </button>
+        </div>
+
+        <!-- Question 3 -->
+        <div id="question-3" class="question-content hidden">
+            <button class="question-btn" onclick="showAnswer(3)">
+                What if Monday felt exactly like Saturday?
+            </button>
+        </div>
+
+        <!-- Answer 3 -->
+        <div id="answer-3" class="content-text hidden">
+            <p>Picture a world where weekends don't exist because the concept of forced work disappears with money. The Monday dread, the Sunday scaries, the feeling that life happens only 2/7ths of the time - all that psychological suffering vanishes when you're not forced to sell your time for survival.</p>
+
+            <p>Imagine working with your actual biorhythms instead of artificial schedules imposed by employers seeking profit. Night owls could contribute during evening hours, early birds at dawn. Some people might work intensively for periods then rest, others prefer steady daily rhythms - all because they want to, not because money forces them.</p>
+
+            <p>Communities stay alive and vibrant all the time instead of being ghost towns during work hours and crowded recreation on weekends. Children wouldn't be warehoused in schools while adults disappear to distant offices to generate money. Without everyone trying to cram living into two days while spending five days waiting for them, there'd be no weekend traffic jams, no frantic attempts to squeeze in errands, no pressure to make every Saturday "count" because Monday is coming.</p>
+
+            <p>Work, learning, creativity, socializing, and rest could all flow together naturally throughout the week rather than being segregated into artificial compartments created by money-driven work schedules. Communities might naturally slow down in winter, be more active in spring, adapt to their environment rather than marching to the same mechanical schedule year-round imposed by profit-seeking systems.</p>
+
+            <button class="next-question-btn" onclick="showQuestion(4)">
+                How would your relationships change with unlimited time?
+            </button>
+        </div>
+
+        <!-- Question 4 -->
+        <div id="question-4" class="question-content hidden">
+            <button class="question-btn" onclick="showAnswer(4)">
+                How would your relationships change with unlimited time?
+            </button>
+        </div>
+
+        <!-- Answer 4 -->
+        <div id="answer-4" class="content-text hidden">
+            <p>Without money systems forcing people into time-stealing jobs, imagine having abundant time for friends, family, community gatherings. Lunch becomes a social event rather than something wolfed down at a desk between profit-generating activities. People aren't exhausted from meaningless jobs that exist only to make money for others, so they have energy for each other.</p>
+
+            <p>Picture parents actually getting to spend time with their children - real time, not just tired evenings and stressed weekends after selling their day for wages. Community meals, storytelling, music, games replace passive entertainment designed to make you feel inadequate so you'll buy things. Time to read, experiment, learn new skills, pursue hobbies that current work schedules imposed by money systems don't allow.</p>
+
+            <p>Maybe you're learning to build musical instruments, or studying astronomy, or developing new growing techniques. Picture relationships deepening when people aren't stressed about survival, when they have mental space for empathy and connection instead of constant worry about their next paycheck or mortgage payment.</p>
+
+            <button class="next-question-btn" onclick="showQuestion(5)">
+                Where would you choose to live if cost meant nothing?
+            </button>
+        </div>
+
+        <!-- Question 5 -->
+        <div id="question-5" class="question-content hidden">
+            <button class="question-btn" onclick="showAnswer(5)">
+                Where would you choose to live if cost meant nothing?
+            </button>
+        </div>
+
+        <!-- Answer 5 -->
+        <div id="answer-5" class="content-text hidden">
+            <p>Since money doesn't exist, imagine choosing your home based purely on what appeals to you - ocean views, mountain forests, vibrant urban communities, quiet countryside. No mortgages, no landlords, no housing speculation constraining your choices because these money-driven concepts simply don't exist.</p>
+
+            <p>Picture homes designed around actual human needs rather than profit margins - natural light, social connection, integration with nature, flexible spaces that adapt to different life phases. Walls that move, spaces that expand when you have guests or contract when you want coziness, gardens that integrate seamlessly with living areas.</p>
+
+            <p>Want to try different places? Move freely between urban communities, rural homesteads, intentional communities focused on specific interests, or nomadic lifestyles like traveling extensively. Since you're not locked into a 30-year mortgage or trapped by lease agreements, you could easily explore different living situations throughout your life.</p>
+
+            <p>Community teams would handle repairs and improvements automatically, so you'd never deal with broken appliances or roof leaks again. Instead of everyone duplicating kitchens, workshops, libraries, and entertainment spaces for individual profit, neighborhoods might have beautiful shared facilities while individual units focus on privacy and personal space.</p>
+
+            <button class="next-question-btn" onclick="alert('More questions coming soon! Visit our social media for updates.')">
+                Continue the journey...
+            </button>
+        </div>
     </div>
 
     <div class="footer">
@@ -323,48 +394,20 @@
     </div>
 
     <script>
-        let currentQuestion = 0;
-        const totalQuestions = 21;
-
-        const questions = [
-            "What if we could eliminate the root cause of most human suffering?",
-            "What would your morning look like without any financial stress?",
-            "Could you wake up every day excited about your contribution?",
-            "What if Monday felt exactly like Saturday?",
-            "How would your relationships change with unlimited time?",
-            "Where would you choose to live if cost meant nothing?",
-            "What if getting anywhere was effortless?",
-            "How would cities transform without profit-driven development?",
-            "How fresh could your food be?",
-            "What would it feel like to live surrounded by thriving nature?",
-            "Would crime disappear if poverty was eliminated?",
-            "How would your children learn about the natural world?",
-            "Could we eliminate fossil fuels without resistance?",
-            "How would it feel to never fear getting sick?",
-            "What if everything you needed was simply available?",
-            "How would unpleasant work disappear?",
-            "How would governance work without wealthy influence?",
-            "How would people get protein without factory farming?",
-            "How would complex decisions get made?",
-            "What if children never learned to 'live for the weekend'?",
-            "How would the transition happen?"
-        ];
-
         function showQuestion(questionNum) {
             // Hide all content
             document.querySelectorAll('.question-content, .content-text').forEach(el => {
                 el.classList.add('hidden');
-                el.classList.remove('visible');
             });
             
             // Show the selected question
-            document.getElementById(`question-${questionNum}`).classList.remove('hidden');
-            document.getElementById(`question-${questionNum}`).classList.add('visible');
-            
-            currentQuestion = questionNum;
+            const questionEl = document.getElementById(`question-${questionNum}`);
+            if (questionEl) {
+                questionEl.classList.remove('hidden');
+            }
             
             // Scroll to top
-            window.scrollTo(0, 0);
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
         function showAnswer(questionNum) {
@@ -372,11 +415,13 @@
             document.getElementById(`question-${questionNum}`).classList.add('hidden');
             
             // Show the answer
-            document.getElementById(`answer-${questionNum}`).classList.remove('hidden');
-            document.getElementById(`answer-${questionNum}`).classList.add('visible');
+            const answerEl = document.getElementById(`answer-${questionNum}`);
+            if (answerEl) {
+                answerEl.classList.remove('hidden');
+            }
         }
 
-        // Initialize - show first question
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             showQuestion(0);
         });
