@@ -5,52 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Zero-Cost Society</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap');
-
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
+            background-color: #e9ebee;
             color: #333;
-            line-height: 1.6;
         }
-
         .container {
-            max-width: 900px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: auto;
             padding: 20px;
         }
-
-        header {
+        .header {
             text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://images.unsplash.com/photo-1517487819126-724391e4a682');
-            background-size: cover;
-            background-position: center;
+            padding: 60px 20px;
+            background-color: #fff;
             border-bottom: 2px solid #ddd;
         }
-
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3em;
-            color: #1a1a1a;
+        .header h1 {
+            font-size: 2.5em;
             margin-bottom: 10px;
+            color: #1a1a1a;
         }
-
-        header p {
+        .header p {
             font-size: 1.2em;
-            color: #555;
+            color: #666;
             font-style: italic;
         }
-
         .menu-container {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
         }
-
         .menu-icon {
             cursor: pointer;
             padding: 10px;
@@ -59,11 +47,9 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             transition: background-color 0.3s;
         }
-
         .menu-icon:hover {
             background-color: rgba(255, 255, 255, 0.9);
         }
-
         .menu-icon span {
             display: block;
             width: 25px;
@@ -72,11 +58,9 @@
             margin: 5px 0;
             transition: 0.4s;
         }
-
         .menu-icon.change .bar1 { transform: rotate(-45deg) translate(-5px, 6px); }
         .menu-icon.change .bar2 { opacity: 0; }
         .menu-icon.change .bar3 { transform: rotate(45deg) translate(-5px, -6px); }
-
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -89,7 +73,6 @@
             border-radius: 5px;
             top: 50px;
         }
-
         .dropdown-menu a {
             color: #333;
             padding: 12px 16px;
@@ -99,43 +82,37 @@
             transition: background-color 0.3s;
             border-radius: 3px;
         }
-
         .dropdown-menu a:hover {
             background-color: #f1f1f1;
         }
-
-        .main-question {
-            text-align: center;
-            font-size: 2.5em;
-            font-family: 'Playfair Display', serif;
-            margin-top: 50px;
-            color: #444;
+        .content {
+            background-color: #fff;
+            padding: 40px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
-        .content-section {
-            padding: 40px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .content-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: #222;
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
-
-        .content-section p {
-            font-size: 1em;
-            color: #555;
+        .question-section {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
             margin-bottom: 20px;
         }
-
+        .question-section:last-child {
+            border-bottom: none;
+        }
+        .question-section h2 {
+            font-size: 1.8em;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        .question-section p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
         .social-links {
             text-align: center;
-            margin-top: 50px;
-            padding-bottom: 50px;
+            padding: 20px;
+            margin-top: 20px;
         }
-
         .social-links a {
             margin: 0 15px;
             text-decoration: none;
@@ -143,18 +120,12 @@
             font-size: 1.1em;
             transition: color 0.3s;
         }
-
         .social-links a:hover {
             color: #000;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <h1>The Zero-Cost Society</h1>
-    <p>A thought experiment into a new world.</p>
-</header>
 
 <div class="menu-container">
     <div class="menu-icon" onclick="toggleMenu()">
@@ -163,148 +134,154 @@
         <span class="bar3"></span>
     </div>
     <div id="dropdown" class="dropdown-menu">
-        <a href="#q1">What if you could live a life of total freedom?</a>
-        <a href="#q2">What if you could escape the debt trap?</a>
-        <a href="#q3">What if you had guaranteed financial security?</a>
-        <a href="#q4">What if everything you needed was free?</a>
-        <a href="#q5">What if you never had to do a job you hated again?</a>
-        <a href="#q6">What if our planet could heal itself?</a>
-        <a href="#q7">What if your home was always clean and perfect?</a>
-        <a href="#q8">What if your home was always at the perfect temperature?</a>
-        <a href="#q9">What if your journey was always effortless?</a>
-        <a href="#q10">What if a clean world was simple to achieve?</a>
-        <a href="#q11">What if every day could be your perfect day?</a>
-        <a href="#q12">What if you could live a life without fear?</a>
-        <a href="#q13">What if traffic and accidents were a thing of the past?</a>
-        <a href="#q14">What if cities were designed for people, not cars?</a>
-        <a href="#q15">What if your life had no limits?</a>
-        <a href="#q16">What if every day felt like Saturday?</a>
-        <a href="#q17">What if a single technology could feed the world and rewild the planet?</a>
-        <a href="#q18">What if the UK countryside became a vast natural paradise?</a>
-        <a href="#q19">What if the oceans returned to their original, vibrant state?</a>
-        <a href="#q20">What if getting the perfect protein was easy?</a>
-        <a href="#q21">What if we taught children an ancient skill for a new world?</a>
-        <a href="#q22">What if critics say it's impossible?</a>
+        <a href="#q1">Live a Life of Total Freedom</a>
+        <a href="#q2">Escape the Debt Trap</a>
+        <a href="#q3">Guaranteed Financial Security</a>
+        <a href="#q4">Everything You Need for Free</a>
+        <a href="#q5">Never Do a Job You Hate</a>
+        <a href="#q6">A Planet That Heals Itself</a>
+        <a href="#q7">A Home That's Always Perfect</a>
+        <a href="#q8">Perfect Temperature, Always</a>
+        <a href="#q9">Effortless Travel</a>
+        <a href="#q10">A Clean World, Simply Achieved</a>
+        <a href="#q11">Your Perfect Day, Every Day</a>
+        <a href="#q12">A Life Without Fear</a>
+        <a href="#q13">No Traffic, No Accidents</a>
+        <a href="#q14">Cities for People, Not Cars</a>
+        <a href="#q15">A Life with No Limits</a>
+        <a href="#q16">Every Day Feels Like Saturday</a>
+        <a href="#q17">One Tech That Feeds the World</a>
+        <a href="#q18">A Natural Paradise in the UK</a>
+        <a href="#q19">Oceans Return to Life</a>
+        <a href="#q20">Get the Perfect Protein</a>
+        <a href="#q21">An Ancient Skill for a New World</a>
+        <a href="#q22">When Critics Say It's Impossible</a>
     </div>
+</div>
+
+<div class="header">
+    <h1>Project Midlife Crisis: The Zero-Cost Society</h1>
+    <p>A thought experiment into a new world where you can have it all.</p>
 </div>
 
 <div class="container">
-    <h2 class="main-question" id="main-q">What if you could live a life of total freedom?</h2>
+    <div class="content">
 
-    <div class="content-section" id="q1">
-        <h2>What if you could live a life of total freedom?</h2>
-        <p>You'd start by designing systems that give people control over their own lives, not a government or a corporation. We'd shift away from things that measure success by dollars and cents, and focus on things that truly matter, like regenerative agriculture, renewable energy, and creating a culture that values meaning over consumption. The goal would be to make a sustainable, fulfilling way of living so appealing that everyone wants it, rather than forcing it on them.</p>
+        <div class="question-section" id="q1">
+            <h2>What if you could live a life of total freedom?</h2>
+            <p>You'd start by designing systems that give people control over their own lives, not a government or a corporation. We'd shift away from things that measure success by dollars and cents, and focus on things that truly matter, like regenerative agriculture, renewable energy, and creating a culture that values meaning over consumption. The goal would be to make a sustainable, fulfilling way of living so appealing that everyone wants it, rather than forcing it on them.</p>
+        </div>
+
+        <div class="question-section" id="q2">
+            <h2>What if you could escape the debt trap?</h2>
+            <p>Imagine a system where wealth can't just be piled up by a few people. It would be a system based on more <strong>cooperative and stakeholder-owned businesses</strong>, and we'd all have a voice in economic decisions. Through <strong>progressive wealth redistribution</strong> and a focus on long-term health, not just short-term profit, we'd stop the kind of wealth concentration that takes away people's power and locks them in debt.</p>
+        </div>
+
+        <div class="question-section" id="q3">
+            <h2>What if you had guaranteed financial security?</h2>
+            <p>This is a clever idea that solves so many problems. If everyone got basic credits that couldn't be saved or accumulated, it would stop a few people from hoarding everything. The <strong>expiration mechanism</strong> would keep resources flowing, while guaranteeing that everyone has what they need. Work would become about what you're passionate about, not what you have to do to survive.</p>
+        </div>
+
+        <div class="question-section" id="q4">
+            <h2>What if everything you needed was free?</h2>
+            <p>This is the ultimate dream—a society where you don't have to worry about the cost of anything. When survival is guaranteed, you can pursue what truly gives you purpose. Free goods and services would get rid of all the waste from marketing and planned obsolescence. It would unleash a wave of creativity and collaboration, just like we see with open-source software and volunteer work today.</p>
+        </div>
+
+        <div class="question-section" id="q5">
+            <h2>What if you never had to do a job you hated again?</h2>
+            <p>This is probably the biggest concern people have, but most "laziness" is really just burnout from pointless work. In this new society, social recognition for your contributions becomes a powerful reward. We would be a community that supports different kinds of contributions, recognizing that everyone has a valuable role to play. When their basic needs are met, people naturally want to contribute something meaningful.</p>
+        </div>
+
+        <div class="question-section" id="q6">
+            <h2>What if our planet could heal itself?</h2>
+            <p>This is a crucial point. Hunting and foraging would be taught to every child, not because they have to, but because it's vital for our connection to nature. This practice teaches children about the cycles of life and death, respect for nature, and the deep resilience of our ancestors. It would be a core part of their education, so that even with technology, we stay connected to the living world.</p>
+        </div>
+
+        <div class="question-section" id="q7">
+            <h2>What if your home was always clean and perfect?</h2>
+            <p>This is a brilliant idea that would make life so much easier. Imagine if every home and refuse point was connected by <strong>vacuum tubes</strong>. This technology already exists, but it's too expensive for a capitalist society that relies on cheap labor. In a zero-cost system, it would be an obvious choice. We would build elegant, effective solutions for everything, not just the most profitable ones.</p>
+        </div>
+
+        <div class="question-section" id="q8">
+            <h2>What if your home was always at the perfect temperature?</h2>
+            <p>Heating is a great example of this thinking. Without profit getting in the way, we would build <strong>district heating systems</strong>, <strong>geothermal networks</strong>, and <strong>passive house designs</strong> that are super efficient. Instead of everyone having their own furnace, communities would build the best solutions at a massive scale, even capturing waste heat and designing homes to need almost no heating at all.</p>
+        </div>
+
+        <div class="question-section" id="q9">
+            <h2>What if your journey was always effortless?</h2>
+            <p>Personal transport would be completely different. Instead of owning and maintaining a vehicle, you could just request a specialized vehicle for your journey. Instead of private cars, there would be <strong>shared autonomous fleets</strong>. Infrastructure would be built for walking and cycling, which would get rid of traffic and make travel so much more enjoyable.</p>
+        </div>
+
+        <div class="question-section" id="q10">
+            <h2>What if a clean world was simple to achieve?</h2>
+            <p>Yes, the fossil fuel problem would become so much simpler to solve. There would be <strong>no entrenched companies fighting to protect their profits</strong>, and we could focus on deploying the best technology. This would allow a rapid and efficient switch to clean energy, since the technology already exists.</p>
+        </div>
+
+        <div class="question-section" id="q11">
+            <h2>What if every day could be your perfect day?</h2>
+            <p>A typical day would be guided by natural rhythms, not an alarm clock. You would wake up to do meaningful work that you are passionate about. You'd have tons of time for connecting with people, learning new things, and being creative. There would be no anxiety about bills or job insecurity. It would be a life that is natural, social, and full of discovery.</p>
+        </div>
+
+        <div class="question-section" id="q12">
+            <h2>What if you could live a life without fear?</h2>
+            <p>Crime would likely change dramatically, as most of it comes from people being desperate, unequal, or driven by profit. Crimes like <strong>theft, drug trafficking, and financial fraud would likely disappear</strong>. What might remain are crimes of passion, but these could be handled with strong mental health support and restorative community care, not just punishment.</p>
+        </div>
+
+        <div class="question-section" id="q13">
+            <h2>What if traffic and accidents were a thing of the past?</h2>
+            <p>The path to full automation becomes dramatically clearer and faster. With <strong>no human drivers</strong>, vehicles could travel with perfect coordination, which would eliminate accidents and allow for higher speeds and a smoother flow of traffic. This would allow for <strong>perfect coordination</strong> and <strong>optimized infrastructure</strong> designed specifically for automated vehicles.</p>
+        </div>
+
+        <div class="question-section" id="q14">
+            <h2>What if cities were designed for people, not cars?</h2>
+            <p>Cities would be completely reimagined without the massive space needed for cars. Up to 60% of urban land could be <strong>reclaimed for parks, community gardens, and homes</strong>. Roads would be smaller, and the streets would be vibrant community spaces. The fundamental change would be from cities built to move and store cars to cities designed for human beings.</p>
+        </div>
+
+        <div class="question-section" id="q15">
+            <h2>What if your life had no limits?</h2>
+            <p>A life free from the need to make money would be completely different. Childhood would be about exploring your interests, followed by <strong>gradual contribution</strong> and <strong>multiple life phases</strong> based on passion, not a single career. The whole idea of "living for the weekend" and retirement would be gone, replaced by a lifelong flow of learning and meaningful work.</p>
+        </div>
+
+        <div class="question-section" id="q16">
+            <h2>What if every day felt like Saturday?</h2>
+            <p>The rhythm of life would be transformed. You'd never have to feel the <strong>Monday dread or the Sunday scaries</strong>, because every day could be dedicated to what you want to do. Life would flow more naturally between activity and rest, and your community would be vibrant all week long.</p>
+        </div>
+
+        <div class="question-section" id="q17">
+            <h2>What if a single technology could feed the world and rewild the planet?</h2>
+            <p>This is a brilliant transformation. <strong>Vertical farming</strong> can produce far more food with less water and land, liberating about 40% of habitable land globally. These freed landscapes could be <strong>rewilded</strong> into continuous habitat corridors, allowing biodiversity and native species to return and sequestering massive amounts of carbon.</p>
+        </div>
+
+        <div class="question-section" id="q18">
+            <h2>What if the UK countryside became a vast natural paradise?</h2>
+            <p>The UK would be stunningly transformed, with about 70% of its land returned to nature. <strong>Rewilding on an epic scale</strong> would create interconnected wilderness networks, allowing species like lynx and wolves to return. The countryside could become one giant nature reserve, and urban areas would be nestled within thriving ecosystems instead of being surrounded by an ecological desert.</p>
+        </div>
+
+        <div class="question-section" id="q19">
+            <h2>What if the oceans returned to their original, vibrant state?</h2>
+            <p>The oceans would recover dramatically. <strong>Industrial fishing would end</strong>, allowing marine populations to explode back to historical levels. Coral reefs and kelp forests would regenerate, and the oceans would be free of plastic. The seas would transform from degraded industrial zones back into the vibrant, teeming ecosystems they once were.</p>
+        </div>
+
+        <div class="question-section" id="q20">
+            <h2>What if getting the perfect protein was easy?</h2>
+            <p>Protein systems would be reimagined for sustainability and ethics. This could include <strong>lab-grown/cultured proteins</strong>, small-scale <strong>sustainable aquaculture</strong>, and abundant <strong>plant-based proteins</strong>. Some communities might engage in <strong>ethical animal partnerships</strong> for ecosystem regeneration, while others might focus on novel sources like insects and algae. The focus would be on perfect nutrition with minimal environmental impact.</p>
+        </div>
+
+        <div class="question-section" id="q21">
+            <h2>What if we taught children an ancient skill for a new world?</h2>
+            <p>This would fundamentally change how children relate to the world. Hunting and foraging would be taught as <strong>ecological literacy</strong>, providing a hands-on understanding of life cycles, respect for nature, and cultural wisdom. It would ensure children grow up with a deep connection to their environment and a profound understanding of their place in the web of life.</p>
+        </div>
+
+        <div class="question-section" id="q22">
+            <h2>What if critics say it's impossible?</h2>
+            <p>They would immediately reach for labels like "communism" or "socialism," even though your system is decentralized, voluntary, and based on abundance, not centralized control. They would use <strong>fear-mongering and historical distortion</strong> to discredit it, but people would see through this by looking at the current system's failures and the successes of small communities that already show a different way is possible.</p>
+        </div>
+
     </div>
-
-    <div class="content-section" id="q2">
-        <h2>What if you could escape the debt trap?</h2>
-        <p>Imagine a system where wealth can't just be piled up by a few people. It would be a system based on more **cooperative and stakeholder-owned businesses**, and we'd all have a voice in economic decisions. Through **progressive wealth redistribution** and a focus on long-term health, not just short-term profit, we'd stop the kind of wealth concentration that takes away people's power and locks them in debt.</p>
-    </div>
-
-    <div class="content-section" id="q3">
-        <h2>What if you had guaranteed financial security?</h2>
-        <p>This is a clever idea that solves so many problems. If everyone got basic credits that couldn't be saved or accumulated, it would stop a few people from hoarding everything. The **expiration mechanism** would keep resources flowing, while guaranteeing that everyone has what they need. Work would become about what you're passionate about, not what you have to do to survive.</p>
-    </div>
-
-    <div class="content-section" id="q4">
-        <h2>What if everything you needed was free?</h2>
-        <p>This is the ultimate dream—a society where you don't have to worry about the cost of anything. When survival is guaranteed, you can pursue what truly gives you purpose. Free goods and services would get rid of all the waste from marketing and planned obsolescence. It would unleash a wave of creativity and collaboration, just like we see with open-source software and volunteer work today.</p>
-    </div>
-
-    <div class="content-section" id="q5">
-        <h2>What if you never had to do a job you hated again?</h2>
-        <p>This is probably the biggest concern people have, but most "laziness" is really just burnout from pointless work. In this new society, social recognition for your contributions becomes a powerful reward. We would be a community that supports different kinds of contributions, recognizing that everyone has a valuable role to play. When their basic needs are met, people naturally want to contribute something meaningful.</p>
-    </div>
-
-    <div class="content-section" id="q6">
-        <h2>What if our planet could heal itself?</h2>
-        <p>This is a crucial point. Hunting and foraging would be taught to every child, not because they have to, but because it's vital for our connection to nature. This practice teaches children about the cycles of life and death, respect for nature, and the deep resilience of our ancestors. It would be a core part of their education, so that even with technology, we stay connected to the living world.</p>
-    </div>
-
-    <div class="content-section" id="q7">
-        <h2>What if your home was always clean and perfect?</h2>
-        <p>This is a brilliant idea that would make life so much easier. Imagine if every home and refuse point was connected by **vacuum tubes**. This technology already exists, but it's too expensive for a capitalist society that relies on cheap labor. In a zero-cost system, it would be an obvious choice. We would build elegant, effective solutions for everything, not just the most profitable ones.</p>
-    </div>
-
-    <div class="content-section" id="q8">
-        <h2>What if your home was always at the perfect temperature?</h2>
-        <p>Heating is a great example of this thinking. Without profit getting in the way, we would build **district heating systems**, **geothermal networks**, and **passive house designs** that are super efficient. Instead of everyone having their own furnace, communities would build the best solutions at a massive scale, even capturing waste heat and designing homes to need almost no heating at all.</p>
-    </div>
-
-    <div class="content-section" id="q9">
-        <h2>What if your journey was always effortless?</h2>
-        <p>Personal transport would be completely different. Instead of owning and maintaining a vehicle, you could just request a specialized vehicle for your journey. Instead of private cars, there would be **shared autonomous fleets**. Infrastructure would be built for walking and cycling, which would get rid of traffic and make travel so much more enjoyable.</p>
-    </div>
-
-    <div class="content-section" id="q10">
-        <h2>What if a clean world was simple to achieve?</h2>
-        <p>Yes, the fossil fuel problem would become so much simpler to solve. There would be **no entrenched companies fighting to protect their profits**, and we could focus on deploying the best technology. This would allow a rapid and efficient switch to clean energy, since the technology already exists.</p>
-    </div>
-
-    <div class="content-section" id="q11">
-        <h2>What if every day could be your perfect day?</h2>
-        <p>A typical day would be guided by natural rhythms, not an alarm clock. You would wake up to do meaningful work that you are passionate about. You'd have tons of time for connecting with people, learning new things, and being creative. There would be no anxiety about bills or job insecurity. It would be a life that is natural, social, and full of discovery.</p>
-    </div>
-
-    <div class="content-section" id="q12">
-        <h2>What if you could live a life without fear?</h2>
-        <p>Crime would likely change dramatically, as most of it comes from people being desperate, unequal, or driven by profit. Crimes like **theft, drug trafficking, and financial fraud would likely disappear**. What might remain are crimes of passion, but these could be handled with strong mental health support and restorative community care, not just punishment.</p>
-    </div>
-
-    <div class="content-section" id="q13">
-        <h2>What if traffic and accidents were a thing of the past?</h2>
-        <p>The path to full automation becomes dramatically clearer and faster. With **no human drivers**, vehicles could travel with perfect coordination, which would eliminate accidents and allow for higher speeds and a smoother flow of traffic. This would allow for **perfect coordination** and **optimized infrastructure** designed specifically for automated vehicles.</p>
-    </div>
-
-    <div class="content-section" id="q14">
-        <h2>What if cities were designed for people, not cars?</h2>
-        <p>Cities would be completely reimagined without the massive space needed for cars. Up to 60% of urban land could be **reclaimed for parks, community gardens, and homes**. Roads would be smaller, and the streets would be vibrant community spaces. The fundamental change would be from cities built to move and store cars to cities designed for human beings.</p>
-    </div>
-
-    <div class="content-section" id="q15">
-        <h2>What if your life had no limits?</h2>
-        <p>A life free from the need to make money would be completely different. Childhood would be about exploring your interests, followed by **gradual contribution** and **multiple life phases** based on passion, not a single career. The whole idea of "living for the weekend" and retirement would be gone, replaced by a lifelong flow of learning and meaningful work.</p>
-    </div>
-
-    <div class="content-section" id="q16">
-        <h2>What if every day felt like Saturday?</h2>
-        <p>The rhythm of life would be transformed. You'd never have to feel the **Monday dread or the Sunday scaries**, because every day could be dedicated to what you want to do. Life would flow more naturally between activity and rest, and your community would be vibrant all week long.</p>
-    </div>
-
-    <div class="content-section" id="q17">
-        <h2>What if a single technology could feed the world and rewild the planet?</h2>
-        <p>This is a brilliant transformation. **Vertical farming** can produce far more food with less water and land, liberating about 40% of habitable land globally. These freed landscapes could be **rewilded** into continuous habitat corridors, allowing biodiversity and native species to return and sequestering massive amounts of carbon.</p>
-    </div>
-
-    <div class="content-section" id="q18">
-        <h2>What if the UK countryside became a vast natural paradise?</h2>
-        <p>The UK would be stunningly transformed, with about 70% of its land returned to nature. **Rewilding on an epic scale** would create interconnected wilderness networks, allowing species like lynx and wolves to return. The countryside could become one giant nature reserve, and urban areas would be nestled within thriving ecosystems instead of being surrounded by an ecological desert.</p>
-    </div>
-
-    <div class="content-section" id="q19">
-        <h2>What if the oceans returned to their original, vibrant state?</h2>
-        <p>The oceans would recover dramatically. **Industrial fishing would end**, allowing marine populations to explode back to historical levels. Coral reefs and kelp forests would regenerate, and the oceans would be free of plastic. The seas would transform from degraded industrial zones back into the vibrant, teeming ecosystems they once were.</p>
-    </div>
-
-    <div class="content-section" id="q20">
-        <h2>What if getting the perfect protein was easy?</h2>
-        <p>Protein systems would be reimagined for sustainability and ethics. This could include **lab-grown/cultured proteins**, small-scale **sustainable aquaculture**, and abundant **plant-based proteins**. Some communities might engage in **ethical animal partnerships** for ecosystem regeneration, while others might focus on novel sources like insects and algae. The focus would be on perfect nutrition with minimal environmental impact.</p>
-    </div>
-
-    <div class="content-section" id="q21">
-        <h2>What if we taught children an ancient skill for a new world?</h2>
-        <p>This would fundamentally change how children relate to the world. Hunting and foraging would be taught as **ecological literacy**, providing a hands-on understanding of life cycles, respect for nature, and cultural wisdom. It would ensure children grow up with a deep connection to their environment and a profound understanding of their place in the web of life.</p>
-    </div>
-
-    <div class="content-section" id="q22">
-        <h2>What if critics say it's impossible?</h2>
-        <p>They would immediately reach for labels like "communism" or "socialism," even though your system is decentralized, voluntary, and based on abundance, not centralized control. They would use **fear-mongering and distorted history** to discredit it, but people would see through this by looking at the current system's failures and the successes of small communities that already show a different way is possible.</p>
-    </div>
-
 </div>
 
 <div class="social-links">
-    <h3 style="color: #4a4a4a; font-family: 'Playfair Display', serif;">Connect with the project:</h3>
+    <h3>Connect with the project:</h3>
     <a href="https://www.youtube.com/channel/thezerocostsociety" target="_blank">YouTube</a> |
     <a href="https://www.instagram.com/thezerocostsociety" target="_blank">Instagram</a> |
     <a href="https://www.tiktok.com/@thezerocostsociety" target="_blank">TikTok</a> |
@@ -322,7 +299,7 @@
             dropdownMenu.style.display = "block";
         }
     }
-
+    
     document.querySelectorAll('.dropdown-menu a').forEach(item => {
         item.addEventListener('click', () => {
             document.getElementById('dropdown').style.display = 'none';
