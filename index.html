@@ -5,308 +5,372 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Zero-Cost Society</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --accent-color: #f7b32b;
+            --dark-color: #1a1a1a;
+            --light-color: #f4f4f4;
+            --bg-color-1: #1a1a1a;
+            --bg-color-2: #222222;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #e9ebee;
-            color: #333;
+            box-sizing: border-box;
         }
-        .container {
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color-1);
+            color: var(--light-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .page-section {
+            display: none;
+            width: 100vw;
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .page-section.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+        }
+
+        /* --- Hero Section --- */
+        #hero-page {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542190891-2093a38ff725?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        #hero-page h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        #hero-page p {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        .what-if-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin-top: 3rem;
+        }
+
+        .what-if-card {
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .what-if-card:hover {
+            transform: translateY(-10px);
+            background: rgba(0,0,0,0.6);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .what-if-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .what-if-card p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* --- Answers Section --- */
+        #answers-page {
+            background: var(--bg-color-2);
+        }
+
+        #answers-page .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .answer-card {
+            background: var(--bg-color-1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .answer-card h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .answer-card p {
+            font-size: 1.1rem;
+        }
+
+        .cta-btn {
+            background: var(--accent-color);
+            color: var(--dark-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+            margin-top: 3rem;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Main Website Hub --- */
+        #main-hub {
+            display: none;
+            flex-direction: column;
+        }
+
+        #main-hub.active {
+            display: flex;
+        }
+        
+        .main-hub-section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .main-hub-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .main-hub-section p {
             max-width: 800px;
             margin: auto;
-            padding: 20px;
+            font-size: 1.1rem;
+            opacity: 0.8;
         }
-        .header {
-            text-align: center;
-            padding: 60px 20px;
-            background-color: #fff;
-            border-bottom: 2px solid #ddd;
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #1a1a1a;
+
+        .video-item {
+            background: var(--dark-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: left;
         }
-        .header p {
-            font-size: 1.2em;
-            color: #666;
-            font-style: italic;
+
+        .video-item .video-placeholder {
+            width: 100%;
+            height: 180px;
+            background: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #aaa;
         }
-        .menu-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
+        
+        .video-item h3 {
+            padding: 1rem;
+            font-size: 1.2rem;
         }
-        .menu-icon {
-            cursor: pointer;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: background-color 0.3s;
-        }
-        .menu-icon:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-        .menu-icon span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            margin: 5px 0;
-            transition: 0.4s;
-        }
-        .menu-icon.change .bar1 { transform: rotate(-45deg) translate(-5px, 6px); }
-        .menu-icon.change .bar2 { opacity: 0; }
-        .menu-icon.change .bar3 { transform: rotate(45deg) translate(-5px, -6px); }
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #fff;
-            min-width: 250px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            padding: 10px;
-            border-radius: 5px;
-            top: 50px;
-        }
-        .dropdown-menu a {
-            color: #333;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.9em;
-            transition: background-color 0.3s;
-            border-radius: 3px;
-        }
-        .dropdown-menu a:hover {
-            background-color: #f1f1f1;
-        }
-        .content {
-            background-color: #fff;
-            padding: 40px;
-            margin-top: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .question-section {
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 20px;
-        }
-        .question-section:last-child {
-            border-bottom: none;
-        }
-        .question-section h2 {
-            font-size: 1.8em;
-            color: #007BFF;
-            margin-bottom: 10px;
-        }
-        .question-section p {
-            font-size: 1em;
-            line-height: 1.6;
-        }
+        
         .social-links {
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
         }
+
         .social-links a {
-            margin: 0 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--light-color);
+            transition: transform 0.3s ease;
             text-decoration: none;
-            color: #555;
-            font-size: 1.1em;
-            transition: color 0.3s;
         }
+
         .social-links a:hover {
-            color: #000;
+            transform: translateY(-5px);
+            color: var(--accent-color);
         }
+        
+        footer {
+            background: var(--bg-color-2);
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
     </style>
 </head>
 <body>
 
-<div class="menu-container">
-    <div class="menu-icon" onclick="toggleMenu()">
-        <span class="bar1"></span>
-        <span class="bar2"></span>
-        <span class="bar3"></span>
+    <div id="hero-page" class="page-section active">
+        <div class="content-container">
+            <h1>The Zero-Cost Society</h1>
+            <p>Imagine a world where everything is free.</p>
+            <div class="what-if-grid">
+                <div class="what-if-card" data-answer-id="money">
+                    <h3>What if money no longer existed?</h3>
+                    <p>What if poverty, inequality, and financial stress were eliminated forever?</p>
+                </div>
+                <div class="what-if-card" data-answer-id="work">
+                    <h3>What if people worked for passion?</h3>
+                    <p>What if everyone could pursue meaningful work instead of survival jobs?</p>
+                </div>
+                <div class="what-if-card" data-answer-id="resources">
+                    <h3>What if resources were abundant?</h3>
+                    <p>What if we could provide for everyone without destroying the planet?</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="dropdown" class="dropdown-menu">
-        <a href="#q1">Live a Life of Total Freedom</a>
-        <a href="#q2">Escape the Debt Trap</a>
-        <a href="#q3">Guaranteed Financial Security</a>
-        <a href="#q4">Everything You Need for Free</a>
-        <a href="#q5">Never Do a Job You Hate</a>
-        <a href="#q6">A Planet That Heals Itself</a>
-        <a href="#q7">A Home That's Always Perfect</a>
-        <a href="#q8">Perfect Temperature, Always</a>
-        <a href="#q9">Effortless Travel</a>
-        <a href="#q10">A Clean World, Simply Achieved</a>
-        <a href="#q11">Your Perfect Day, Every Day</a>
-        <a href="#q12">A Life Without Fear</a>
-        <a href="#q13">No Traffic, No Accidents</a>
-        <a href="#q14">Cities for People, Not Cars</a>
-        <a href="#q15">A Life with No Limits</a>
-        <a href="#q16">Every Day Feels Like Saturday</a>
-        <a href="#q17">One Tech That Feeds the World</a>
-        <a href="#q18">A Natural Paradise in the UK</a>
-        <a href="#q19">Oceans Return to Life</a>
-        <a href="#q20">Get the Perfect Protein</a>
-        <a href="#q21">An Ancient Skill for a New World</a>
-        <a href="#q22">When Critics Say It's Impossible</a>
+
+    <div id="answers-page" class="page-section">
+        <div class="container">
+            <div class="answer-card" id="answer-content">
+                </div>
+            <a href="#" class="cta-btn" id="explore-hub-btn">Explore the Full Vision</a>
+        </div>
     </div>
-</div>
 
-<div class="header">
-    <h1>Project Midlife Crisis: The Zero-Cost Society</h1>
-    <p>A thought experiment into a new world where you can have it all.</p>
-</div>
-
-<div class="container">
-    <div class="content">
-
-        <div class="question-section" id="q1">
-            <h2>What if you could live a life of total freedom?</h2>
-            <p>You'd start by designing systems that give people control over their own lives, not a government or a corporation. We'd shift away from things that measure success by dollars and cents, and focus on things that truly matter, like regenerative agriculture, renewable energy, and creating a culture that values meaning over consumption. The goal would be to make a sustainable, fulfilling way of living so appealing that everyone wants it, rather than forcing it on them.</p>
+    <div id="main-hub" class="page-section">
+        <div class="main-hub-section" id="about">
+            <div class="container">
+                <h2>About Project Midlife Crisis</h2>
+                <p>
+                    I'm Nigel, and I'm on a journey to explore life's "what ifs." Traveling in my self-converted campervan, Big Yellow, and with my motorbike, I'm finding out what it means to live a life of true value, where the greatest experiences often come at zero financial cost. This is a project about finding freedom, hidden gems, and a new way of living in a world obsessed with profit.
+                </p>
+            </div>
         </div>
+        
+        <hr>
 
-        <div class="question-section" id="q2">
-            <h2>What if you could escape the debt trap?</h2>
-            <p>Imagine a system where wealth can't just be piled up by a few people. It would be a system based on more <strong>cooperative and stakeholder-owned businesses</strong>, and we'd all have a voice in economic decisions. Through <strong>progressive wealth redistribution</strong> and a focus on long-term health, not just short-term profit, we'd stop the kind of wealth concentration that takes away people's power and locks them in debt.</p>
+        <div class="main-hub-section" id="videos">
+            <div class="container">
+                <h2>Latest Adventures</h2>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <iframe width="100%" height="200" src="YOUR_YOUTUBE_EMBED_URL_1" frameborder="0" allowfullscreen></iframe>
+                        <h3>Video Title 1</h3>
+                    </div>
+                    <div class="video-item">
+                        <iframe width="100%" height="200" src="YOUR_YOUTUBE_EMBED_URL_2" frameborder="0" allowfullscreen></iframe>
+                        <h3>Video Title 2</h3>
+                    </div>
+                    <div class="video-item">
+                        <iframe width="100%" height="200" src="YOUR_YOUTUBE_EMBED_URL_3" frameborder="0" allowfullscreen></iframe>
+                        <h3>Video Title 3</h3>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        <hr>
 
-        <div class="question-section" id="q3">
-            <h2>What if you had guaranteed financial security?</h2>
-            <p>This is a clever idea that solves so many problems. If everyone got basic credits that couldn't be saved or accumulated, it would stop a few people from hoarding everything. The <strong>expiration mechanism</strong> would keep resources flowing, while guaranteeing that everyone has what they need. Work would become about what you're passionate about, not what you have to do to survive.</p>
+        <div class="main-hub-section" id="connect">
+            <div class="container">
+                <h2>Connect with the Journey</h2>
+                <p>Join me and the community as we explore what a zero-cost society could look like, one adventure at a time.</p>
+                <div class="social-links">
+                    <a href="https://beacons.ai/projectmidlifecrisis" target="_blank">Website</a>
+                    <a href="https://www.instagram.com/projectmidlifecrisis" target="_blank">Instagram</a>
+                    <a href="https://www.tiktok.com/@projectmidlifecrisis" target="_blank">TikTok</a>
+                    <a href="https://www.youtube.com/@projectmidlifecrisis" target="_blank">YouTube</a>
+                </div>
+            </div>
         </div>
-
-        <div class="question-section" id="q4">
-            <h2>What if everything you needed was free?</h2>
-            <p>This is the ultimate dream—a society where you don't have to worry about the cost of anything. When survival is guaranteed, you can pursue what truly gives you purpose. Free goods and services would get rid of all the waste from marketing and planned obsolescence. It would unleash a wave of creativity and collaboration, just like we see with open-source software and volunteer work today.</p>
-        </div>
-
-        <div class="question-section" id="q5">
-            <h2>What if you never had to do a job you hated again?</h2>
-            <p>This is probably the biggest concern people have, but most "laziness" is really just burnout from pointless work. In this new society, social recognition for your contributions becomes a powerful reward. We would be a community that supports different kinds of contributions, recognizing that everyone has a valuable role to play. When their basic needs are met, people naturally want to contribute something meaningful.</p>
-        </div>
-
-        <div class="question-section" id="q6">
-            <h2>What if our planet could heal itself?</h2>
-            <p>This is a crucial point. Hunting and foraging would be taught to every child, not because they have to, but because it's vital for our connection to nature. This practice teaches children about the cycles of life and death, respect for nature, and the deep resilience of our ancestors. It would be a core part of their education, so that even with technology, we stay connected to the living world.</p>
-        </div>
-
-        <div class="question-section" id="q7">
-            <h2>What if your home was always clean and perfect?</h2>
-            <p>This is a brilliant idea that would make life so much easier. Imagine if every home and refuse point was connected by <strong>vacuum tubes</strong>. This technology already exists, but it's too expensive for a capitalist society that relies on cheap labor. In a zero-cost system, it would be an obvious choice. We would build elegant, effective solutions for everything, not just the most profitable ones.</p>
-        </div>
-
-        <div class="question-section" id="q8">
-            <h2>What if your home was always at the perfect temperature?</h2>
-            <p>Heating is a great example of this thinking. Without profit getting in the way, we would build <strong>district heating systems</strong>, <strong>geothermal networks</strong>, and <strong>passive house designs</strong> that are super efficient. Instead of everyone having their own furnace, communities would build the best solutions at a massive scale, even capturing waste heat and designing homes to need almost no heating at all.</p>
-        </div>
-
-        <div class="question-section" id="q9">
-            <h2>What if your journey was always effortless?</h2>
-            <p>Personal transport would be completely different. Instead of owning and maintaining a vehicle, you could just request a specialized vehicle for your journey. Instead of private cars, there would be <strong>shared autonomous fleets</strong>. Infrastructure would be built for walking and cycling, which would get rid of traffic and make travel so much more enjoyable.</p>
-        </div>
-
-        <div class="question-section" id="q10">
-            <h2>What if a clean world was simple to achieve?</h2>
-            <p>Yes, the fossil fuel problem would become so much simpler to solve. There would be <strong>no entrenched companies fighting to protect their profits</strong>, and we could focus on deploying the best technology. This would allow a rapid and efficient switch to clean energy, since the technology already exists.</p>
-        </div>
-
-        <div class="question-section" id="q11">
-            <h2>What if every day could be your perfect day?</h2>
-            <p>A typical day would be guided by natural rhythms, not an alarm clock. You would wake up to do meaningful work that you are passionate about. You'd have tons of time for connecting with people, learning new things, and being creative. There would be no anxiety about bills or job insecurity. It would be a life that is natural, social, and full of discovery.</p>
-        </div>
-
-        <div class="question-section" id="q12">
-            <h2>What if you could live a life without fear?</h2>
-            <p>Crime would likely change dramatically, as most of it comes from people being desperate, unequal, or driven by profit. Crimes like <strong>theft, drug trafficking, and financial fraud would likely disappear</strong>. What might remain are crimes of passion, but these could be handled with strong mental health support and restorative community care, not just punishment.</p>
-        </div>
-
-        <div class="question-section" id="q13">
-            <h2>What if traffic and accidents were a thing of the past?</h2>
-            <p>The path to full automation becomes dramatically clearer and faster. With <strong>no human drivers</strong>, vehicles could travel with perfect coordination, which would eliminate accidents and allow for higher speeds and a smoother flow of traffic. This would allow for <strong>perfect coordination</strong> and <strong>optimized infrastructure</strong> designed specifically for automated vehicles.</p>
-        </div>
-
-        <div class="question-section" id="q14">
-            <h2>What if cities were designed for people, not cars?</h2>
-            <p>Cities would be completely reimagined without the massive space needed for cars. Up to 60% of urban land could be <strong>reclaimed for parks, community gardens, and homes</strong>. Roads would be smaller, and the streets would be vibrant community spaces. The fundamental change would be from cities built to move and store cars to cities designed for human beings.</p>
-        </div>
-
-        <div class="question-section" id="q15">
-            <h2>What if your life had no limits?</h2>
-            <p>A life free from the need to make money would be completely different. Childhood would be about exploring your interests, followed by <strong>gradual contribution</strong> and <strong>multiple life phases</strong> based on passion, not a single career. The whole idea of "living for the weekend" and retirement would be gone, replaced by a lifelong flow of learning and meaningful work.</p>
-        </div>
-
-        <div class="question-section" id="q16">
-            <h2>What if every day felt like Saturday?</h2>
-            <p>The rhythm of life would be transformed. You'd never have to feel the <strong>Monday dread or the Sunday scaries</strong>, because every day could be dedicated to what you want to do. Life would flow more naturally between activity and rest, and your community would be vibrant all week long.</p>
-        </div>
-
-        <div class="question-section" id="q17">
-            <h2>What if a single technology could feed the world and rewild the planet?</h2>
-            <p>This is a brilliant transformation. <strong>Vertical farming</strong> can produce far more food with less water and land, liberating about 40% of habitable land globally. These freed landscapes could be <strong>rewilded</strong> into continuous habitat corridors, allowing biodiversity and native species to return and sequestering massive amounts of carbon.</p>
-        </div>
-
-        <div class="question-section" id="q18">
-            <h2>What if the UK countryside became a vast natural paradise?</h2>
-            <p>The UK would be stunningly transformed, with about 70% of its land returned to nature. <strong>Rewilding on an epic scale</strong> would create interconnected wilderness networks, allowing species like lynx and wolves to return. The countryside could become one giant nature reserve, and urban areas would be nestled within thriving ecosystems instead of being surrounded by an ecological desert.</p>
-        </div>
-
-        <div class="question-section" id="q19">
-            <h2>What if the oceans returned to their original, vibrant state?</h2>
-            <p>The oceans would recover dramatically. <strong>Industrial fishing would end</strong>, allowing marine populations to explode back to historical levels. Coral reefs and kelp forests would regenerate, and the oceans would be free of plastic. The seas would transform from degraded industrial zones back into the vibrant, teeming ecosystems they once were.</p>
-        </div>
-
-        <div class="question-section" id="q20">
-            <h2>What if getting the perfect protein was easy?</h2>
-            <p>Protein systems would be reimagined for sustainability and ethics. This could include <strong>lab-grown/cultured proteins</strong>, small-scale <strong>sustainable aquaculture</strong>, and abundant <strong>plant-based proteins</strong>. Some communities might engage in <strong>ethical animal partnerships</strong> for ecosystem regeneration, while others might focus on novel sources like insects and algae. The focus would be on perfect nutrition with minimal environmental impact.</p>
-        </div>
-
-        <div class="question-section" id="q21">
-            <h2>What if we taught children an ancient skill for a new world?</h2>
-            <p>This would fundamentally change how children relate to the world. Hunting and foraging would be taught as <strong>ecological literacy</strong>, providing a hands-on understanding of life cycles, respect for nature, and cultural wisdom. It would ensure children grow up with a deep connection to their environment and a profound understanding of their place in the web of life.</p>
-        </div>
-
-        <div class="question-section" id="q22">
-            <h2>What if critics say it's impossible?</h2>
-            <p>They would immediately reach for labels like "communism" or "socialism," even though your system is decentralized, voluntary, and based on abundance, not centralized control. They would use <strong>fear-mongering and historical distortion</strong> to discredit it, but people would see through this by looking at the current system's failures and the successes of small communities that already show a different way is possible.</p>
-        </div>
-
     </div>
-</div>
-
-<div class="social-links">
-    <h3>Connect with the project:</h3>
-    <a href="https://www.youtube.com/channel/thezerocostsociety" target="_blank">YouTube</a> |
-    <a href="https://www.instagram.com/thezerocostsociety" target="_blank">Instagram</a> |
-    <a href="https://www.tiktok.com/@thezerocostsociety" target="_blank">TikTok</a> |
-    <a href="mailto:thezerocostsociety@gmail.com">Email</a>
-</div>
-
-<script>
-    function toggleMenu() {
-        var menuIcon = document.querySelector('.menu-icon');
-        var dropdownMenu = document.getElementById('dropdown');
-        menuIcon.classList.toggle('change');
-        if (dropdownMenu.style.display === "block") {
-            dropdownMenu.style.display = "none";
-        } else {
-            dropdownMenu.style.display = "block";
-        }
-    }
     
-    document.querySelectorAll('.dropdown-menu a').forEach(item => {
-        item.addEventListener('click', () => {
-            document.getElementById('dropdown').style.display = 'none';
-            document.querySelector('.menu-icon').classList.remove('change');
-        });
-    });
-</script>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 The Zero-Cost Society. All rights reserved.</p>
+        </div>
+    </footer>
 
+    <script>
+        const answerData = {
+            'money': {
+                title: 'No Currency System',
+                body: 'By eliminating money and creating an abundance-based economy, we can focus on human potential rather than profit. People are free to contribute based on passion and take what they need, eliminating poverty and financial stress.'
+            },
+            'work': {
+                title: 'Meaningful Contribution',
+                body: 'When survival needs are guaranteed, people naturally pursue work they find meaningful. This leads to better quality, greater innovation, and a society focused on shared well-being rather than pointless jobs.'
+            },
+            'resources': {
+                title: 'Abundant Resources',
+                body: 'We already produce enough for everyone. By removing the profit motive and patent barriers, technologies like vertical farming and automation can be shared freely to provide for all, without damaging the planet.'
+            }
+        };
+
+        document.querySelectorAll('.what-if-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const answerId = this.getAttribute('data-answer-id');
+                const answer = answerData[answerId];
+                
+                document.getElementById('answer-content').innerHTML = `
+                    <h2>${answer.title}</h2>
+                    <p>${answer.body}</p>
+                `;
+
+                document.getElementById('hero-page').classList.remove('active');
+                document.getElementById('answers-page').classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        document.getElementById('explore-hub-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('answers-page').classList.remove('active');
+            document.getElementById('main-hub').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
