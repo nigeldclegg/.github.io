@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Zero Cost Society</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        /* Landing Page */
+        .landing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .landing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .landing h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .landing .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .what-if-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .what-if-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .what-if-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .what-if-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        /* Problem Page */
+        .problem {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            color: white;
+            display: none;
+        }
+
+        .problem::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1569163139161-de52c2d8e704?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .problem h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 2rem 0;
+        }
+
+        .problem-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .problem-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .problem-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #ffeb3b;
+        }
+
+        /* Individual Solution Pages */
+        .solution-page {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            display: none;
+            text-align: left;
+            justify-content: flex-start;
+            padding-top: 4rem;
+        }
+
+        .solution-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .solution-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .solution-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .solution-content h3 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem 0;
+            color: #ffeb3b;
+        }
+
+        .solution-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .solution-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .feature-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #ffeb3b;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 1rem;
+            transition: all 0.3s ease;
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #333;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 3rem;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Final Solution Overview Page */
+        .solution-overview {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            display: none;
+        }
+
+        .solution-overview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .solution-overview h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .cta-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffeb3b;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .landing h1 {
+                font-size: 2.5rem;
+            }
+            .landing .subtitle {
+                font-size: 1.2rem;
+            }
+            .what-if-grid {
+                grid-template-columns: 1fr;
+            }
+            .back-btn {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 2rem;
+            }
+            .navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .solution-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing" class="page landing">
+        <h1>The Zero Cost Society</h1>
+        <p class="subtitle">Imagine a world beyond money, beyond scarcity, beyond exploitation...</p>
+        
+        <div class="what-if-grid">
+            <div class="what-if-card" onclick="showPage('problem')">
+                <h3>What if there was no money?</h3>
+                <p>What if we could eliminate poverty, inequality, and financial stress forever?</p>
+            </div>
+            
+            <div class="what-if-card" onclick="showPage('problem')">
+                <h3>What if people worked for passion?</h3>
+                <p>What if everyone could pursue meaningful work instead of survival jobs?</p>
+            </div>
+            
+            <div class="what-if-card" onclick="showPage('problem')">
+                <h3>What if housing was abundant?</h3>
+                <p>What if no one worried about rent, mortgages, or homelessness?</p>
+            </div>
+            
+            <div class="what-if-card" onclick="showPage('problem')">
+                <h3>What if transport was shared?</h3>
+                <p>What if automated vehicles eliminated traffic, pollution, and parking?</p>
+            </div>
+            
+            <div class="what-if-card" onclick="showPage('problem')">
+                <h3>What if food was grown locally?</h3>
+                <p>What if vertical farms freed the countryside for rewilding?</p>
+            </div>
+            
+            <div class="what-if-card" onclick="showPage('problem')">
+                <h3>What if energy was truly clean?</h3>
+                <p>What if we transitioned to renewables without fossil fuel resistance?</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problem Page -->
+    <div id="problem" class="page problem">
+        <button class="back-btn" onclick="showPage('landing')">← Back</button>
+        
+        <h2>The Problem We Face Today</h2>
+        <p style="font-size: 1.3rem; margin-bottom: 2rem; max-width: 800px;">
+            Our current system creates artificial scarcity while concentrating wealth and power in the hands of a few, 
+            leading to inequality, environmental destruction, and human suffering on a massive scale.
+        </p>
+        
+        <div class="problems-grid">
+            <div class="problem-item" onclick="showSolution(0)">
+                <h4>Wealth Concentration</h4>
+                <p>A tiny elite controls most resources while billions struggle with basic needs.</p>
+            </div>
+            
+            <div class="problem-item" onclick="showSolution(1)">
+                <h4>Environmental Destruction</h4>
+                <p>Profit motives drive climate change, pollution, and mass extinction.</p>
+            </div>
+            
+            <div class="problem-item" onclick="showSolution(2)">
+                <h4>Meaningless Work</h4>
+                <p>Most people spend their lives in jobs that don't fulfill them or benefit society.</p>
+            </div>
+            
+            <div class="problem-item" onclick="showSolution(3)">
+                <h4>Artificial Scarcity</h4>
+                <p>We have enough resources for everyone, but money systems create artificial shortages.</p>
+            </div>
+            
+            <div class="problem-item" onclick="showSolution(4)">
+                <h4>Mental Health Crisis</h4>
+                <p>Financial stress, inequality, and disconnection cause widespread anxiety and depression.</p>
+            </div>
+            
+            <div class="problem-item" onclick="showSolution(5)">
+                <h4>Democratic Deficit</h4>
+                <p>Wealthy interests buy political influence, undermining true democracy.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Solution Pages -->
+    <div id="solution0" class="page solution-page">
+        <button class="back-btn" onclick="showPage('problem')">← Back</button>
+        <div class="solution-content">
+            <h2>No Currency System</h2>
+            
+            <p>Instead of concentrating wealth in the hands of a few, we eliminate money entirely. People contribute what they can and take what they need, creating true abundance without artificial scarcity.</p>
+            
+            <h3>How It Works</h3>
+            <p>Every person receives abundant access to all basic needs - housing, food, transport, healthcare, education - without any form of payment or currency. Communities coordinate through voluntary cooperation rather than market mechanisms.</p>
+            
+            <div class="solution-features">
+                <div class="feature-item">
+                    <h4>No Exploitation</h4>
+                    <p>Without money, no one can accumulate wealth from others' labor. All contribution becomes genuinely voluntary and based on passion or community need.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>True Abundance</h4>
+                    <p>When basic needs are guaranteed, people are free to pursue meaningful work, creativity, and community building without survival pressure.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Natural Cooperation</h4>
+                    <p>People naturally help each other when their own needs are secure, creating communities based on mutual aid rather than competition.</p>
+                </div>
+            </div>
+            
+            <h3>The Result</h3>
+            <p>No poverty, no homelessness, no financial stress. People wake up each day free to contribute meaningfully to their communities and pursue their passions, knowing their basic needs are always secure.</p>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-btn" onclick="showPage('problem')">← All Problems</button>
+            <button class="nav-btn" onclick="showSolution(1)">Next Solution →</button>
+        </div>
+    </div>
+
+    <div id="solution1" class="page solution-page">
+        <button class="back-btn" onclick="showPage('problem')">← Back</button>
+        <div class="solution-content">
+            <h2>Ecological Restoration</h2>
+            
+            <p>Without profit motives driving environmental destruction, we can rapidly transition to renewable energy, restore ecosystems, and heal the planet while meeting human needs more efficiently.</p>
+            
+            <h3>Renewable Energy Revolution</h3>
+            <p>No fossil fuel companies fighting change means immediate transition to solar, wind, and clean energy. Without patent restrictions and profit barriers, the best technologies spread rapidly everywhere.</p>
+            
+            <div class="solution-features">
+                <div class="feature-item">
+                    <h4>No Resistance</h4>
+                    <p>Oil companies and fossil fuel lobbying disappear, removing the main barriers to clean energy adoption.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Optimal Technology</h4>
+                    <p>Deploy whatever works best rather than whatever generates most profit. Share innovations freely across all communities.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Ecosystem Restoration</h4>
+                    <p>Massive reforestation, ocean cleanup, and biodiversity recovery when profit no longer drives environmental destruction.</p>
+                </div>
+            </div>
+            
+            <h3>Rewilding and Biodiversity</h3>
+            <p>With vertical farming freeing up countryside and no profit-driven exploitation, vast areas can be rewilded. Native species return, forests regrow, and natural ecosystems heal rapidly.</p>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-btn" onclick="showSolution(0)">← Previous</button>
+            <button class="nav-btn" onclick="showSolution(2)">Next Solution →</button>
+        </div>
+    </div>
+
+    <div id="solution2" class="page solution-page">
+        <button class="back-btn" onclick="showPage('problem')">← Back</button>
+        <div class="solution-content">
+            <h2>Meaningful Contribution</h2>
+            
+            <p>When survival needs are guaranteed, people naturally pursue work they find meaningful and fulfilling. The result is better outcomes in every field as people follow their passions and genuine interests.</p>
+            
+            <h3>Passion-Driven Work</h3>
+            <p>No more "jobs you hate to pay bills you don't want." People contribute to projects they care about, work with others who share their interests, and create value because it matters to them.</p>
+            
+            <div class="solution-features">
+                <div class="feature-item">
+                    <h4>Natural Innovation</h4>
+                    <p>When people work on what fascinates them, they push boundaries and create breakthroughs that profit-driven research often misses.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Quality Focus</h4>
+                    <p>Without pressure to cut costs or maximize profit, people can build things to last, work sustainably, and prioritize excellence.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Community Benefit</h4>
+                    <p>Work becomes about improving life for everyone rather than generating returns for shareholders.</p>
+                </div>
+            </div>
+            
+            <h3>Examples We See Today</h3>
+            <p>Open source software, Wikipedia, volunteer fire departments, scientific research - people already do incredible work driven by curiosity, purpose, and community benefit rather than profit.</p>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-btn" onclick="showSolution(1)">← Previous</button>
+            <button class="nav-btn" onclick="showSolution(3)">Next Solution →</button>
+        </div>
+    </div>
+
+    <div id="solution3" class="page solution-page">
+        <button class="back-btn" onclick="showPage('problem')">← Back</button>
+        <div class="solution-content">
+            <h2>Abundant Resources</h2>
+            
+            <p>We already produce enough for everyone. By eliminating artificial scarcity created by profit motives and patent systems, abundance becomes available to all.</p>
+            
+            <h3>Technology Without Barriers</h3>
+            <p>No more patent restrictions slowing down innovation. Successful technologies can be replicated everywhere immediately. 3D printing, automation, and efficient production serve everyone.</p>
+            
+            <div class="solution-features">
+                <div class="feature-item">
+                    <h4>Vertical Farming</h4>
+                    <p>Produce 10-100x more food per square meter in urban towers, freeing countryside for rewilding while ensuring food security.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Automated Production</h4>
+                    <p>Robots and AI handle routine manufacturing, making goods abundant while freeing humans for creative and caring work.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Shared Infrastructure</h4>
+                    <p>Community workshops, tool libraries, maker spaces - everyone has access to equipment and resources when needed.</p>
+                </div>
+            </div>
+            
+            <h3>End of Waste</h3>
+            <p>No more planned obsolescence, no more overproduction for profit. Things are built to last, to be repaired, and to serve human needs efficiently.</p>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-btn" onclick="showSolution(2)">← Previous</button>
+            <button class="nav-btn" onclick="showSolution(4)">Next Solution →</button>
+        </div>
+    </div>
+
+    <div id="solution4" class="page solution-page">
+        <button class="back-btn" onclick="showPage('problem')">← Back</button>
+        <div class="solution-content">
+            <h2>Mental Health & Wellbeing</h2>
+            
+            <p>When basic needs are secure and people pursue meaningful work, mental health flourishes naturally. No more anxiety about bills, jobs, housing, or survival.</p>
+            
+            <h3>Stress-Free Living</h3>
+            <p>No financial worry, no job insecurity, no fear of homelessness or medical bankruptcy. Mental energy gets freed up for relationships, creativity, and personal growth.</p>
+            
+            <div class="solution-features">
+                <div class="feature-item">
+                    <h4>Natural Rhythms</h4>
+                    <p>Work with your body's natural energy cycles rather than artificial schedules. Rest when needed, be active when inspired.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Community Connection</h4>
+                    <p>Time and energy for deep relationships, community involvement, and social support that current work demands often prevent.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Purpose & Meaning</h4>
+                    <p>Contributing to something you care about rather than just earning money creates deep fulfillment and psychological health.</p>
+                </div>
+            </div>
+            
+            <h3>COVID Proved This</h3>
+            <p>During lockdown when basic needs were provided, people explored hobbies, learned skills, helped neighbors, and discovered their anxiety was often work-related rather than personal failing.</p>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-btn" onclick="showSolution(3)">← Previous</button>
+            <button class="nav-btn" onclick="showSolution(5)">Next Solution →</button>
+        </div>
+    </div>
+
+    <div id="solution5" class="page solution-page">
+        <button class="back-btn" onclick="showPage('problem')">← Back</button>
+        <div class="solution-content">
+            <h2>Democratic Communities</h2>
+            
+            <p>Without concentrated wealth buying political influence, communities can make decisions democratically based on what actually serves people and the environment.</p>
+            
+            <h3>Local Decision-Making</h3>
+            <p>Governance happens at community scales where people know each other and understand local impacts. No distant bureaucrats or corporate lobbying.</p>
+            
+            <div class="solution-features">
+                <div class="feature-item">
+                    <h4>Consensus Building</h4>
+                    <p>Without competing economic interests, communities can focus on solutions that work for everyone rather than compromises between profit motives.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Rotating Leadership</h4>
+                    <p>Facilitation roles rotate rather than creating permanent power structures. Everyone contributes to community coordination.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Expertise Integration</h4>
+                    <p>Decisions involve those with relevant knowledge - engineers for infrastructure, teachers for education - but as contributors, not rulers.</p>
+                </div>
+            </div>
+            
+            <h3>No Corruption</h3>
+            <p>Without wealthy interests to buy influence, without campaign contributions or lobbying, decisions get made based purely on community benefit and environmental health.</p>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-btn" onclick="showSolution(4)">← Previous</button>
+            <button class="nav-btn" onclick="showPage('solution-overview')">Complete Vision →</button>
+        </div>
+    </div>
+
+    <!-- Solution Overview Page -->
+    <div id="solution-overview" class="page solution-overview">
+        <button class="back-btn" onclick="showSolution(5)">← Back</button>
+        
+        <h2>The Complete Vision</h2>
+        <p style="font-size: 1.3rem; margin-bottom: 2rem; max-width: 900px;">
+            Together, these solutions create a world where human potential can flourish without the artificial constraints 
+            of money, scarcity, and exploitation. A society designed for abundance, sustainability, and genuine human wellbeing.
+        </p>
+        
+        <div class="cta-section">
+            <h3>Ready to Explore This Vision Further?</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                Join the conversation and help us imagine a better world together.
+            </p>
+            
+            <div class="social-links">
+                <a href="https://facebook.com/thezerocostsociety" class="social-link" target="_blank">Facebook</a>
+                <a href="https://instagram.com/thezerocostsociety" class="social-link" target="_blank">Instagram</a>
+                <a href="https://tiktok.com/@thezerocostsociety" class="social-link" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSolution = 0;
+        const totalSolutions = 6;
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+            document.getElementById(pageId).style.display = 'flex';
+        }
+
+        function showSolution(index) {
+            currentSolution = index;
+            showPage('solution' + index);
+        }
+
+        // Add smooth scrolling and animation effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.what-if-card, .problem-item, .feature-item').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
