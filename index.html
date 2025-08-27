@@ -3,18 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Zero-Cost Society</title>
+    <title>The Zero Cost Society</title>
     <style>
-        :root {
-            --primary-color: #0077b6;
-            --secondary-color: #00b4d8;
-            --accent-color: #f7b32b;
-            --dark-color: #1a1a1a;
-            --light-color: #f4f4f4;
-            --bg-color-1: #1a1a1a;
-            --bg-color-2: #222222;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -22,354 +12,373 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color-1);
-            color: var(--light-color);
-            line-height: 1.6;
-            scroll-behavior: smooth;
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: white;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        .page-section {
-            display: none;
-            width: 100vw;
-            min-height: 100vh;
-            padding: 4rem 2rem;
+        .header {
             text-align: center;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+            padding: 3rem 2rem 2rem;
+            position: relative;
         }
 
-        .page-section.active {
+        .dropdown {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+        }
+
+        .dropdown-btn {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #333;
+            min-width: 300px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background: #ff6b35;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #ff6b35;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .content-area {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            opacity: 1;
+            text-align: center;
         }
 
-        /* --- Hero Section --- */
-        #hero-page {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542190891-2093a38ff725?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+        .question-btn {
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
             color: white;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-        }
-
-        #hero-page h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            margin-bottom: 1rem;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        #hero-page p {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            border: none;
+            padding: 2rem 3rem;
+            font-size: 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            transition: all 0.3s ease;
             max-width: 600px;
-            margin-bottom: 2rem;
-            animation: fadeInDown 1.2s ease-out;
+            line-height: 1.4;
         }
 
-        .what-if-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
-            margin-top: 3rem;
+        .question-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
         }
 
-        .what-if-card {
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(5px);
-            padding: 2rem;
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: left;
+            max-width: 900px;
+        }
+
+        .content-text h3 {
+            color: #ff6b35;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .content-text h4 {
+            color: #ffaa80;
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .content-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .next-question-btn {
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: white;
+            border: none;
+            padding: 1.5rem 2.5rem;
+            font-size: 1.3rem;
             border-radius: 10px;
             cursor: pointer;
+            margin-top: 3rem;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.2);
-            animation: fadeInUp 1s ease-out;
         }
 
-        .what-if-card:hover {
-            transform: translateY(-10px);
-            background: rgba(0,0,0,0.6);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        .next-question-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
         }
 
-        .what-if-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .what-if-card p {
-            font-size: 1rem;
-            opacity: 0.8;
-        }
-
-        /* --- Answers Section --- */
-        #answers-page {
-            background: var(--bg-color-2);
-        }
-
-        #answers-page .container {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .answer-card {
-            background: var(--bg-color-1);
+        .footer {
+            text-align: center;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            text-align: left;
-            margin-bottom: 2rem;
-        }
-
-        .answer-card h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .answer-card p {
-            font-size: 1.1rem;
-        }
-
-        .cta-btn {
-            background: var(--accent-color);
-            color: var(--dark-color);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: transform 0.3s ease;
+            border-top: 1px solid #333;
             margin-top: 3rem;
         }
 
-        .cta-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* --- Main Website Hub --- */
-        #main-hub {
-            display: none;
-            flex-direction: column;
-        }
-
-        #main-hub.active {
-            display: flex;
-        }
-        
-        .main-hub-section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .main-hub-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-
-        .main-hub-section p {
-            max-width: 800px;
-            margin: auto;
-            font-size: 1.1rem;
-            opacity: 0.8;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .video-item {
-            background: var(--dark-color);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            text-align: left;
-        }
-
-        .video-item .video-placeholder {
-            width: 100%;
-            height: 180px;
-            background: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            color: #aaa;
-        }
-        
-        .video-item h3 {
-            padding: 1rem;
-            font-size: 1.2rem;
-        }
-        
         .social-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
+            margin-top: 1rem;
         }
 
-        .social-links a {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--light-color);
-            transition: transform 0.3s ease;
+        .social-link {
+            color: #ff6b35;
+            font-size: 1.1rem;
             text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #ff6b35;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
-        .social-links a:hover {
-            transform: translateY(-5px);
-            color: var(--accent-color);
-        }
-        
-        footer {
-            background: var(--bg-color-2);
-            text-align: center;
-            padding: 1.5rem 0;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-        
-        /* --- Animations --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .social-link:hover {
+            background: #ff6b35;
+            color: white;
+            transform: translateY(-2px);
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hidden {
+            display: none;
         }
 
+        .visible {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .question-btn {
+                font-size: 1.2rem;
+                padding: 1.5rem 2rem;
+            }
+            .dropdown {
+                position: static;
+                margin-bottom: 1rem;
+            }
+            .dropdown-content {
+                position: static;
+                display: none;
+                margin-top: 0.5rem;
+            }
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
-
-    <div id="hero-page" class="page-section active">
-        <div class="content-container">
-            <h1>The Zero-Cost Society</h1>
-            <p>Imagine a world where everything is free.</p>
-            <div class="what-if-grid">
-                <div class="what-if-card" data-answer-id="money">
-                    <h3>What if money no longer existed?</h3>
-                    <p>What if poverty, inequality, and financial stress were eliminated forever?</p>
-                </div>
-                <div class="what-if-card" data-answer-id="work">
-                    <h3>What if people worked for passion?</h3>
-                    <p>What if everyone could pursue meaningful work instead of survival jobs?</p>
-                </div>
-                <div class="what-if-card" data-answer-id="resources">
-                    <h3>What if resources were abundant?</h3>
-                    <p>What if we could provide for everyone without destroying the planet?</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="answers-page" class="page-section">
-        <div class="container">
-            <div class="answer-card" id="answer-content">
-                </div>
-            <a href="#" class="cta-btn" id="explore-hub-btn">Explore the Full Vision</a>
-        </div>
-    </div>
-
-    <div id="main-hub" class="page-section">
-        <div class="main-hub-section" id="about">
-            <div class="container">
-                <h2>About Project Midlife Crisis</h2>
-                <p>
-                    I'm Nigel, and I'm on a journey to explore life's "what ifs." Traveling in my self-converted campervan, Big Yellow, and with my motorbike, I'm finding out what it means to live a life of true value, where the greatest experiences often come at zero financial cost. This is a project about finding freedom, hidden gems, and a new way of living in a world obsessed with profit.
-                </p>
+    <div class="header">
+        <div class="dropdown">
+            <button class="dropdown-btn">Jump to Question ▼</button>
+            <div class="dropdown-content">
+                <a onclick="showQuestion(0)">What if we eliminated the root cause?</a>
+                <a onclick="showQuestion(1)">Morning without financial stress</a>
+                <a onclick="showQuestion(2)">Excited about your work</a>
+                <a onclick="showQuestion(3)">Monday feels like Saturday</a>
+                <a onclick="showQuestion(4)">Relationships with unlimited time</a>
+                <a onclick="showQuestion(5)">Choose where to live freely</a>
+                <a onclick="showQuestion(6)">Effortless travel</a>
+                <a onclick="showQuestion(7)">Cities designed for humans</a>
+                <a onclick="showQuestion(8)">Fresh local food</a>
+                <a onclick="showQuestion(9)">Surrounded by nature</a>
+                <a onclick="showQuestion(10)">Would crime disappear?</a>
+                <a onclick="showQuestion(11)">Children learning naturally</a>
+                <a onclick="showQuestion(12)">Eliminate fossil fuels</a>
+                <a onclick="showQuestion(13)">Never fear getting sick</a>
+                <a onclick="showQuestion(14)">Everything available</a>
+                <a onclick="showQuestion(15)">Unpleasant work disappears</a>
+                <a onclick="showQuestion(16)">Governance without wealth</a>
+                <a onclick="showQuestion(17)">Protein without factory farms</a>
+                <a onclick="showQuestion(18)">Complex community decisions</a>
+                <a onclick="showQuestion(19)">Children never "live for weekend"</a>
+                <a onclick="showQuestion(20)">How would transition happen?</a>
             </div>
         </div>
         
-        <hr>
+        <h1 class="main-title">The Zero Cost Society</h1>
+        <h2 class="subtitle">Because money really is the root of all evil</h2>
+    </div>
 
-        <div class="main-hub-section" id="videos">
-            <div class="container">
-                <h2>Latest Adventures</h2>
-                <div class="video-grid">
-                    <div class="video-item">
-                        <iframe width="100%" height="200" src="YOUR_YOUTUBE_EMBED_URL_1" frameborder="0" allowfullscreen></iframe>
-                        <h3>Video Title 1</h3>
-                    </div>
-                    <div class="video-item">
-                        <iframe width="100%" height="200" src="YOUR_YOUTUBE_EMBED_URL_2" frameborder="0" allowfullscreen></iframe>
-                        <h3>Video Title 2</h3>
-                    </div>
-                    <div class="video-item">
-                        <iframe width="100%" height="200" src="YOUR_YOUTUBE_EMBED_URL_3" frameborder="0" allowfullscreen></iframe>
-                        <h3>Video Title 3</h3>
-                    </div>
-                </div>
-            </div>
+    <div class="content-area">
+        <!-- Question 0 - Initial -->
+        <div id="question-0" class="question-content">
+            <button class="question-btn" onclick="showAnswer(0)">
+                What if we could eliminate the root cause of most human suffering?
+            </button>
         </div>
-        
-        <hr>
 
-        <div class="main-hub-section" id="connect">
-            <div class="container">
-                <h2>Connect with the Journey</h2>
-                <p>Join me and the community as we explore what a zero-cost society could look like, one adventure at a time.</p>
-                <div class="social-links">
-                    <a href="https://beacons.ai/projectmidlifecrisis" target="_blank">Website</a>
-                    <a href="https://www.instagram.com/projectmidlifecrisis" target="_blank">Instagram</a>
-                    <a href="https://www.tiktok.com/@projectmidlifecrisis" target="_blank">TikTok</a>
-                    <a href="https://www.youtube.com/@projectmidlifecrisis" target="_blank">YouTube</a>
-                </div>
-            </div>
+        <!-- Answer 0 -->
+        <div id="answer-0" class="content-text hidden">
+            <h3>Our Current Reality:</h3>
+            <p>Right now, a few wealthy individuals control most of the world's resources while billions struggle with basic needs. This isn't because there isn't enough - we already produce enough food, have enough technology, and possess sufficient knowledge to provide abundance for everyone. The problem is our money system that creates artificial scarcity to generate profit for the few.</p>
+            
+            <p>Money forces people into meaningless jobs just to survive. It drives environmental destruction because profit matters more than the planet. It concentrates power in the hands of those who can accumulate the most wealth, regardless of their wisdom or compassion. Most of your stress, anxiety, and limitations come from this single system.</p>
+
+            <h4>You've heard since childhood that "money is the root of all evil" - but what if we actually took that seriously and eliminated money entirely?</h4>
+
+            <h3>Why Change Is Now Possible:</h3>
+            <p>For the first time in human history, we have the technology to automate most essential work. Vertical farming can produce abundant food in small spaces. Renewable energy can power everything cleanly. AI can coordinate transport and logistics perfectly. 3D printing can manufacture goods efficiently. We can literally provide abundance for everyone without destroying the planet.</p>
+
+            <p>The only thing stopping us is the money system itself - because abundance isn't profitable for those who profit from scarcity.</p>
+
+            <h3>The Simple Solution:</h3>
+            <p>Eliminate money entirely. Not replace it, not reform it - eliminate it completely. People contribute what they can and take what they need. Communities coordinate through voluntary cooperation. Technology serves human needs rather than generating profit.</p>
+
+            <p>This isn't paying for anything differently - it's recognizing that we already have everything needed, and money just gets in the way of distributing it sensibly.</p>
+
+            <p>Picture a world where the very concept of buying and selling disappears. No bills to pay, no prices to compare, no financial transactions of any kind. Every person has abundant access to housing, food, transport, healthcare, education without any form of payment because these things simply exist for everyone.</p>
+
+            <p>This creates a gift economy where people contribute what they can, take what they need, and help because it feels good and builds community. Projects happen because people care about them, not because someone can profit from them.</p>
+
+            <button class="next-question-btn" onclick="showQuestion(1)">
+                What would your morning look like without any financial stress?
+            </button>
+        </div>
+
+        <!-- Question 1 -->
+        <div id="question-1" class="question-content hidden">
+            <button class="question-btn" onclick="showAnswer(1)">
+                What would your morning look like without any financial stress?
+            </button>
+        </div>
+
+        <!-- Answer 1 -->
+        <div id="answer-1" class="content-text hidden">
+            <p>Imagine waking up naturally and never once thinking about money. No checking bank balances with anxiety. No mental calculation of bills due this week. No panic about whether you can afford groceries or rent. The constant background anxiety that most people carry simply doesn't exist because money doesn't exist.</p>
+
+            <p>Picture breakfast ingredients available from community gardens and food systems - fresh, abundant, no grocery shopping required. You actually have time to taste your food, to sit and enjoy the morning, maybe chat with neighbors over coffee. Your mental energy, freed from survival worry, flows naturally toward curiosity, relationships, and creativity.</p>
+
+            <p>No bills, no job insecurity, no health insurance stress, no retirement planning. Mental energy freed up for curiosity, relationships, and creativity. During lockdown when basic needs were provided, people discovered their anxiety was often work-related rather than personal failing. Without money systems creating survival pressure, that anxiety simply disappears.</p>
+
+            <button class="next-question-btn" onclick="showQuestion(2)">
+                Could you wake up every day excited about your contribution?
+            </button>
+        </div>
+
+        <!-- Continue pattern for all questions... -->
+        
+    </div>
+
+    <div class="footer">
+        <p>Join the conversation and help us imagine a better world together</p>
+        <div class="social-links">
+            <a href="https://youtube.com/@TheZeroCostSociety" class="social-link" target="_blank">YouTube</a>
+            <a href="https://instagram.com/thezerocostsociety" class="social-link" target="_blank">Instagram</a>
+            <a href="https://tiktok.com/@thezerocostsociety" class="social-link" target="_blank">TikTok</a>
         </div>
     </div>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 The Zero-Cost Society. All rights reserved.</p>
-        </div>
-    </footer>
 
     <script>
-        const answerData = {
-            'money': {
-                title: 'No Currency System',
-                body: 'By eliminating money and creating an abundance-based economy, we can focus on human potential rather than profit. People are free to contribute based on passion and take what they need, eliminating poverty and financial stress.'
-            },
-            'work': {
-                title: 'Meaningful Contribution',
-                body: 'When survival needs are guaranteed, people naturally pursue work they find meaningful. This leads to better quality, greater innovation, and a society focused on shared well-being rather than pointless jobs.'
-            },
-            'resources': {
-                title: 'Abundant Resources',
-                body: 'We already produce enough for everyone. By removing the profit motive and patent barriers, technologies like vertical farming and automation can be shared freely to provide for all, without damaging the planet.'
-            }
-        };
+        let currentQuestion = 0;
+        const totalQuestions = 21;
 
-        document.querySelectorAll('.what-if-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const answerId = this.getAttribute('data-answer-id');
-                const answer = answerData[answerId];
-                
-                document.getElementById('answer-content').innerHTML = `
-                    <h2>${answer.title}</h2>
-                    <p>${answer.body}</p>
-                `;
+        const questions = [
+            "What if we could eliminate the root cause of most human suffering?",
+            "What would your morning look like without any financial stress?",
+            "Could you wake up every day excited about your contribution?",
+            "What if Monday felt exactly like Saturday?",
+            "How would your relationships change with unlimited time?",
+            "Where would you choose to live if cost meant nothing?",
+            "What if getting anywhere was effortless?",
+            "How would cities transform without profit-driven development?",
+            "How fresh could your food be?",
+            "What would it feel like to live surrounded by thriving nature?",
+            "Would crime disappear if poverty was eliminated?",
+            "How would your children learn about the natural world?",
+            "Could we eliminate fossil fuels without resistance?",
+            "How would it feel to never fear getting sick?",
+            "What if everything you needed was simply available?",
+            "How would unpleasant work disappear?",
+            "How would governance work without wealthy influence?",
+            "How would people get protein without factory farming?",
+            "How would complex decisions get made?",
+            "What if children never learned to 'live for the weekend'?",
+            "How would the transition happen?"
+        ];
 
-                document.getElementById('hero-page').classList.remove('active');
-                document.getElementById('answers-page').classList.add('active');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+        function showQuestion(questionNum) {
+            // Hide all content
+            document.querySelectorAll('.question-content, .content-text').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('visible');
             });
-        });
+            
+            // Show the selected question
+            document.getElementById(`question-${questionNum}`).classList.remove('hidden');
+            document.getElementById(`question-${questionNum}`).classList.add('visible');
+            
+            currentQuestion = questionNum;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
 
-        document.getElementById('explore-hub-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('answers-page').classList.remove('active');
-            document.getElementById('main-hub').classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function showAnswer(questionNum) {
+            // Hide the question button
+            document.getElementById(`question-${questionNum}`).classList.add('hidden');
+            
+            // Show the answer
+            document.getElementById(`answer-${questionNum}`).classList.remove('hidden');
+            document.getElementById(`answer-${questionNum}`).classList.add('visible');
+        }
+
+        // Initialize - show first question
+        document.addEventListener('DOMContentLoaded', function() {
+            showQuestion(0);
         });
     </script>
 </body>
