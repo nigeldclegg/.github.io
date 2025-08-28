@@ -1,3 +1,4 @@
+// Corrected script.js
 document.addEventListener('DOMContentLoaded', () => {
     const chapters = document.querySelectorAll('.story-section');
     const continueButtons = document.querySelectorAll('.continue-btn');
@@ -37,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event Listeners
     header.addEventListener('click', (event) => {
-        // Only trigger goHome if the click is on the header, not the menu
         if (!event.target.closest('.hamburger-menu')) {
             showChapter(1);
             updateUrl(1);
