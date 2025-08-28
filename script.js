@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateBackButton() {
-        // Use history.length to check if a back history exists
         if (history.length > 1) {
             backButton.classList.remove('hidden');
         } else {
@@ -46,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // The corrected event listener for the hamburger menu
     hamburgerMenu.addEventListener('click', () => {
         dropdownMenu.classList.toggle('active');
         hamburgerMenu.classList.toggle('active');
@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateUrl(nextChapterNum);
                 updateBackButton();
             } else {
-                // Handle the "Join The Movement" button
                 alert("Thank you for taking this journey. Share this vision and help us build the Zero Cost Society.");
             }
         });
@@ -80,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
         history.back();
     });
 
-    // Handle browser back/forward button clicks
     window.addEventListener('popstate', (event) => {
         if (event.state && event.state.chapter) {
             showChapter(event.state.chapter);
