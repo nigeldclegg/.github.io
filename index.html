@@ -4,364 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Zero Cost Society</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #000;
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .header {
-            text-align: center;
-            padding: 3rem 2rem 2rem;
-            position: relative;
-        }
-
-        .main-title {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #ff6b35;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        .story-section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .story-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            text-align: left;
-            margin-bottom: 3rem;
-        }
-
-        .story-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .story-text h2 {
-            color: #ff6b35;
-            font-size: 2.5rem;
-            text-align: center;
-            margin: 3rem 0 2rem 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .story-text h3 {
-            color: #ffaa80;
-            font-size: 1.8rem;
-            margin: 2rem 0 1rem 0;
-        }
-
-        .continue-btn {
-            background: linear-gradient(45deg, #ff6b35, #ff8c42);
-            color: white;
-            border: none;
-            padding: 2rem 3rem;
-            font-size: 1.4rem;
-            border-radius: 15px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-            transition: all 0.3s ease;
-            margin: 2rem auto;
-            display: block;
-        }
-
-        .continue-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .tragic-text {
-            color: #ff6666;
-        }
-
-        .hope-text {
-            color: #66ff66;
-        }
-
-        .emphasis {
-            color: #ff6b35;
-            font-weight: bold;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid #333;
-            margin-top: 3rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        .social-link {
-            color: #ff6b35;
-            font-size: 1.1rem;
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            border: 2px solid #ff6b35;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: #ff6b35;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .main-title {
-                font-size: 2.5rem;
-            }
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            .continue-btn {
-                font-size: 1.2rem;
-                padding: 1.5rem 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="header">
+        <div class="hamburger-menu">
+            <div class="hamburger-lines"></div>
+            <div class="hamburger-lines"></div>
+            <div class="hamburger-lines"></div>
+            <div class="menu-dropdown">
+                <a href="#" data-chapter="1">Chapter 1: The World We've Created</a>
+                <a href="#" data-chapter="2">Chapter 2: The Root of All Evil</a>
+                <a href="#" data-chapter="3">Chapter 3: A Different Path</a>
+                <a href="#" data-chapter="4">Chapter 4: The World We Could Create</a>
+                <a href="#" data-chapter="5">Chapter 5: Making It Real</a>
+                <a href="#" data-chapter="6">Chapter 6: The Fork in the Road</a>
+            </div>
+        </div>
         <h1 class="main-title">The Zero Cost Society</h1>
         <h2 class="subtitle">Because money really is the root of all evil</h2>
     </div>
 
-    <!-- Chapter 1: The Tragedy -->
-    <div id="chapter-1" class="story-section">
+    <div id="chapter-1" class="story-section active-chapter">
         <div class="story-text">
             <h2>Chapter 1: The World We've Created</h2>
-            
             <p>Right now, as you read these words, <span class="tragic-text">a child is going to bed hungry</span> while warehouses full of food sit locked away because someone can't afford to buy it.</p>
-
             <p><span class="tragic-text">An elderly person is dying alone</span> because their family is working three jobs just to afford rent, with no time for the relationships that matter most.</p>
-
             <p><span class="tragic-text">Ancient forests are being clear-cut</span>, not because we need the wood, but because destroying them generates more profit than preserving them.</p>
-
             <p><span class="tragic-text">Species that took millions of years to evolve are vanishing forever</span> - not from natural disaster, but from a system that values quarterly profits over the web of life that sustains us all.</p>
-
             <p><span class="tragic-text">Young people are taking their own lives</span> because they see no future beyond debt, meaningless work, and environmental collapse.</p>
-
             <p>This isn't happening because we lack resources. We produce enough food to feed 10 billion people. We have technology that could power the world cleanly. We possess the knowledge to create abundance for everyone while healing the planet.</p>
-
             <p>So why is this tragedy unfolding?</p>
         </div>
-
-        <button class="continue-btn" onclick="showChapter(2)">
-            The Real Culprit
-        </button>
+        <button class="continue-btn" data-next-chapter="2"> The Real Culprit </button>
     </div>
 
-    <!-- Chapter 2: Money as the Root -->
     <div id="chapter-2" class="story-section hidden">
         <div class="story-text">
             <h2>Chapter 2: The Root of All Evil</h2>
-            
             <p>You learned it as a child: <span class="emphasis">"Money is the root of all evil."</span> But have you ever wondered if that's literally true?</p>
-
             <p>Money doesn't just enable the tragedies above - <span class="emphasis">it requires them</span>. Our monetary system needs scarcity to function. If housing were abundant, landlords couldn't charge rent. If food were freely available, agribusiness couldn't extract profit. If people weren't desperate for wages, they couldn't be exploited.</p>
-
             <p>The system demands that a few accumulate vast wealth while the many struggle with artificial scarcity. <span class="tragic-text">This isn't a bug - it's the feature.</span></p>
-
             <h3>The Invisible Prison</h3>
-            
             <p>Most people spend their lives trapped in what we might call "survival mode" - working jobs they don't care about, too exhausted for relationships, too anxious about money to pursue their dreams, too busy earning wages to participate in their communities.</p>
-
             <p>Meanwhile, <span class="tragic-text">a handful of individuals control more resources than billions of others combined</span>. Not because they work harder or contribute more to society, but because our money system allows infinite accumulation of power.</p>
-
             <p>These ultra-wealthy use their accumulated money to buy political influence, media control, and regulatory capture - ensuring the system that enriches them can never be changed through normal democratic processes.</p>
-
             <p>And all the while, <span class="tragic-text">our planet burns</span> because stopping climate change isn't profitable for those who profit from destruction.</p>
         </div>
-
-        <button class="continue-btn" onclick="showChapter(3)">
-            But What If...
-        </button>
+        <button class="continue-btn" data-next-chapter="3"> But What If... </button>
     </div>
 
-    <!-- Chapter 3: The Possibility -->
     <div id="chapter-3" class="story-section hidden">
         <div class="story-text">
             <h2>Chapter 3: A Different Path</h2>
-            
             <p>But here's what they don't want you to know: <span class="hope-text">we have everything we need to create paradise on Earth.</span></p>
-
             <p>For the first time in human history, our technology could provide abundance for everyone:</p>
-
             <h3>The Technology Already Exists</h3>
-            
             <p><span class="hope-text">Vertical farms</span> can produce 100 times more food per square meter than traditional agriculture, using 95% less water, with no pesticides, year-round harvests, immune to climate change.</p>
-
             <p><span class="hope-text">Renewable energy</span> could power everything cleanly and abundantly - the sun provides 10,000 times more energy than we use.</p>
-
             <p><span class="hope-text">AI and automation</span> could handle most tedious, dangerous, and unpleasant work, freeing humans for creativity, care, and community.</p>
-
             <p><span class="hope-text">3D printing and advanced manufacturing</span> could produce durable goods locally and efficiently.</p>
-
             <p>We literally have the capacity to eliminate scarcity. The only thing stopping us is a system that profits from artificial shortage.</p>
-
             <h3>What if we took "money is the root of all evil" seriously?</h3>
-            
             <p>What if, instead of trying to reform or regulate the system that creates these problems, we simply <span class="emphasis">eliminated it entirely?</span></p>
-
             <p>What if money just... didn't exist?</p>
         </div>
-
-        <button class="continue-btn" onclick="showChapter(4)">
-            Imagine A World Without Money
-        </button>
+        <button class="continue-btn" data-next-chapter="4"> Imagine A World Without Money </button>
     </div>
 
-    <!-- Chapter 4: The Vision -->
     <div id="chapter-4" class="story-section hidden">
         <div class="story-text">
             <h2>Chapter 4: The World We Could Create</h2>
-            
             <p>Picture waking up tomorrow in a world where <span class="hope-text">money simply doesn't exist</span>.</p>
-
             <p>No bills to pay. No mortgage or rent. No anxiety about affording food or healthcare. No job you hate just to survive. No retirement worries. <span class="hope-text">That constant background stress that most people carry simply vanishes.</span></p>
-
             <p>Instead, you wake up naturally, excited about what you might contribute today. Maybe you'll work on solar energy because it fascinates you. Maybe you'll teach children because you love their curiosity. Maybe you'll create art that moves people.</p>
-
             <p><span class="hope-text">You work because it matters to you, not because you're forced to by survival pressure.</span></p>
-
             <h3>A Day in Your New Life</h3>
-            
             <p>Breakfast ingredients are fresh from the community vertical farm - harvested this morning, no shopping required. Your beautiful home was designed by the community for human flourishing, not profit maximization.</p>
-
             <p>Transportation arrives when you call it - perfectly maintained, AI-coordinated for efficiency and safety. No traffic, no pollution, no parking hassles.</p>
-
             <p>Your children learn by exploring their genuine interests, developing real skills in nature and community, not sitting in classrooms preparing for jobs that exist only to generate profit.</p>
-
             <p>Step outside to forests where there once were industrial farms. Hear wildlife returning. Breathe clean air. See clear rivers and recovering oceans.</p>
-
             <p><span class="hope-text">This isn't fantasy - it's what becomes possible when we eliminate the artificial barriers to abundance.</span></p>
         </div>
-
-        <button class="continue-btn" onclick="showChapter(5)">
-            How This Could Actually Work
-        </button>
+        <button class="continue-btn" data-next-chapter="5"> How This Could Actually Work </button>
     </div>
 
-    <!-- Chapter 5: The How -->
     <div id="chapter-5" class="story-section hidden">
         <div class="story-text">
             <h2>Chapter 5: Making It Real</h2>
-            
             <p>The most common objection is always: <span class="emphasis">"But who would pay for it?"</span></p>
-
             <p>This question misses the point entirely. We wouldn't pay for anything - because payment itself disappears.</p>
-
             <h3>We Already Have Everything We Need</h3>
-            
             <p>The resources exist. The technology exists. The knowledge exists. The only thing missing is a distribution system that serves human needs instead of generating profit.</p>
-
             <p><span class="hope-text">People contribute what they can and take what they need.</span> Just like families do. Just like communities have done throughout most of human history.</p>
-
             <p>We already see this working in open source software, Wikipedia, volunteer fire departments, scientific research - people creating incredible value driven by curiosity and purpose rather than profit.</p>
-
             <h3>What About Motivation?</h3>
-            
             <p>COVID accidentally proved this could work. When people's basic needs were provided without forced employment, they explored creativity, helped neighbors, learned new skills, and questioned meaningless jobs.</p>
-
             <p>The panic to get people "back to work" wasn't about economic necessity - essential services continued. It was about preventing people from realizing they could live fulfilling lives without monetary coercion.</p>
-
             <h3>The Transition</h3>
-            
             <p>Those with concentrated wealth would resist this transformation because monetary systems are the source of their power. Change would likely be crisis-driven - when environmental collapse or system failures make current approaches obviously inadequate.</p>
-
             <p>But communities could begin building alternatives now. Small groups proving that different ways of organizing are not only possible but superior to what we have.</p>
         </div>
-
-        <button class="continue-btn" onclick="showChapter(6)">
-            Your Choice
-        </button>
+        <button class="continue-btn" data-next-chapter="6"> Your Choice </button>
     </div>
 
-    <!-- Chapter 6: The Call -->
     <div id="chapter-6" class="story-section hidden">
         <div class="story-text">
             <h2>Chapter 6: The Fork in the Road</h2>
-            
             <p>So here we stand at a crossroads.</p>
-
             <p><span class="tragic-text">Path One</span> continues the current trajectory: increasing inequality, environmental collapse, mass extinction, human suffering on an unprecedented scale, all to maintain a system that serves a tiny elite while destroying everything else.</p>
-
             <p><span class="hope-text">Path Two</span> recognizes that our childhood wisdom was right: money really is the root of all evil. And offers the radical solution of eliminating it entirely, creating abundance and sustainability for everyone.</p>
-
             <p>The technology exists. The resources exist. The only question is whether we have the courage to imagine something fundamentally different.</p>
-
             <h3>What Will You Choose?</h3>
-            
             <p>You could close this page and return to the world of bills and bosses, accepting that suffering and environmental destruction are just "the way things are."</p>
-
             <p>Or you could join a growing movement of people who refuse to accept that humanity's potential should be constrained by artificial scarcity created for the benefit of a few.</p>
-
             <p><span class="hope-text">The Zero Cost Society isn't just an idea - it's a vision of human civilization finally living up to its potential.</span></p>
-
             <p>Money may be the root of all evil, but <span class="emphasis">we have the power to pull up that root and plant something beautiful in its place.</span></p>
-
             <p>The choice is yours.</p>
         </div>
-
         <div style="text-align: center; margin-top: 3rem;">
-            <button class="continue-btn" onclick="alert('Thank you for taking this journey. Share this vision and help us build the Zero Cost Society.')">
-                Join The Movement
-            </button>
+            <button class="continue-btn" data-action="join"> Join The Movement </button>
         </div>
     </div>
 
     <div class="footer">
+        <button class="back-button hidden">← Back</button>
         <p>Share this vision and help us build a better world</p>
         <div class="social-links">
-            <a href="https://youtube.com/@TheZeroCostSociety" class="social-link" target="_blank">YouTube</a>
-            <a href="https://instagram.com/thezerocostsociety" class="social-link" target="_blank">Instagram</a>
-            <a href="https://tiktok.com/@thezerocostsociety" class="social-link" target="_blank">TikTok</a>
+            <a href="https://beacons.ai/projectmidlifecrisis" class="social-link" target="_blank">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg> YouTube
+            </a>
+            <a href="https://instagram.com/thezerocostsociety" class="social-link" target="_blank">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg> Instagram
+            </a>
+            <a href="https://www.tiktok.com/@thezerocostsociety" class="social-link" target="_blank">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                </svg> TikTok
+            </a>
+        </div>
+        <div class="contact-info">
+            Contact us: <a href="mailto:thezerocostsociety@gmail.com" class="email-link">thezerocostsociety@gmail.com</a>
         </div>
     </div>
 
-    <script>
-        function showChapter(chapterNum) {
-            // Hide all chapters
-            document.querySelectorAll('.story-section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            
-            // Show the selected chapter
-            document.getElementById(`chapter-${chapterNum}`).classList.remove('hidden');
-            
-            // Smooth scroll to top
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
