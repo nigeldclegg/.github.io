@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateBackButton() {
+        // Use history.length to check if a back history exists
         if (history.length > 1) {
             backButton.classList.remove('hidden');
         } else {
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event Listeners
     header.addEventListener('click', (event) => {
-        // Only trigger goHome if the click is directly on the header, not the menu
+        // Only trigger goHome if the click is on the header, not the menu
         if (!event.target.closest('.hamburger-menu')) {
             showChapter(1);
             updateUrl(1);
